@@ -301,7 +301,8 @@
     .bold-header-bar{
       background:#111827;
       color:white;
-      padding:10px 14px;
+      padding:10
+px 14px;
       border-radius:8px;
       margin-bottom:10px;
       display:flex;
@@ -380,6 +381,15 @@
   </style>
 </head>
 <body>
+  <header style="max-width:1200px;margin:0 auto 16px auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;">
+      <div style="font-weight:800;font-size:20px;">FastResume</div>
+      <div style="font-size:12px;color:#6b7280;">
+        AI Resume Builder
+      </div>
+    </div>
+  </header>
+
   <div class="container">
     <!-- LEFT PANEL -->
     <div class="left">
@@ -516,6 +526,17 @@
       <div id="resumePreview" class="resume"></div>
     </div>
   </div>
+
+  <!-- FOOTER -->
+  <footer style="
+    max-width:1200px;
+    margin:16px auto 0 auto;
+    font-size:11px;
+    color:#6b7280;
+    text-align:center;
+  ">
+    © 2025 FastResume • Built by Students • Powered by AI
+  </footer>
 
   <script>
     /* ===== STATE & DOM ===== */
