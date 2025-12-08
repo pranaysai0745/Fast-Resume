@@ -1,72 +1,111 @@
-// server.js — FastResume backend using Groq (Llama 3)
+// server.js — FastResume backend using Groq (Improved Prompt)
 
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
-// Node 18+ has fetch built-in
-// If Node < 18, install node-fetch and uncomment:
-// const fetch = require('node-fetch');
-
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.static(__dirname)); // serve index.html + assets
+app.use(express.static(__dirname));
 
-// ======================
-// ENV + GROQ CONFIG
-// ======================
 const API_KEY = process.env.GROQ_API_KEY;
 if (!API_KEY) {
-  console.error('❌ GROQ_API_KEY missing in environment');
+  console.error('❌ GROQ_API_KEY missing');
   process.exit(1);
 }
 
 const MODEL = 'llama-3.3-70b-versatile';
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
-// ======================
-// GROQ CALL
-// ======================
+/* =======================
+   GROQ CALL
+======================= */
 async function callGroq(text, experienceLevel) {
-  const level = experienceLevel || 'fresher';
-
-  const levelDescription =
-    level === 'fresher'
-      ? 'a student / fresher with 0 years of full-time experience'
-      : level === 'junior'
-      ? 'a junior engineer with 0–2 years of professional experience'
-      : 'an experienced engineer with 2+ years of professional experience';
-
-  const levelRules =
-    level === 'fresher'
+  const levelGuide =
+    experienceLevel === 'fresher'
       ? `
-Fresher rules:
-- Do NOT invent internships, jobs, companies, or job titles.
-- If no real work experience exists, set "experience": "".
-- Emphasise EDUCATION, PROJECTS, and SKILLS.
+You are generating a resume for a COLLEGE STUDENT / FRESHER.
+Focus on:
+- Education
+- Technical skills
+- Academic & personal projects
+- Internships
+- Learning mindset
+`
+      : experienceLevel === 'junior'
+      ? `
+You are generating a resume for a JUNIOR ENGINEER (0–2 years).
+Focus on:
+- Practical experience
+- Internships / entry-level work
+- Projects with real impact
 `
       : `
-Experienced rules:
-- Use experience ONLY if explicitly mentioned.
-- Group roles by company.
-- Focus on responsibilities, technologies, and measurable impact.
-- Do NOT invent dates, metrics, or companies.
+You are generating a resume for an EXPERIENCED ENGINEER (2+ years).
+Focus on:
+- Professional experience FIRST
+- Measurable impact
+- Tools, scale, leadership
 `;
 
-  const userPrompt = `
-You are an ATS-optimised resume generator.
+  const prompt = `
+You are an EXPERT ATS-FRIENDLY RESUME WRITER.
 
-Candidate profile:
-- ${levelDescription}
+${levelGuide}
 
-TASK:
-- Read the user text carefully.
-- Extract ONLY real information stated or clearly implied.
-- Rephrase into clean, professional resume wording.
-- Output ONE valid JSON object ONLY.
+The input is ONE PARAGRAPH written by the candidate.
 
-JSON SCHEMA (ALL keys must exist):
+Your task:
+- Extract relevant information
+- Rewrite it into strong, professional resume sections
+- Use ATS-friendly language
+- Use bullet points
+- Be concise and impactful
+
+IMPORTANT RULES:
+• DO NOT invent companies, degrees, or fake details
+• DO NOT add filler or buzzwords
+• DO NOT mention "N/A"
+• If not provided → return empty string ""
+• Use action verbs (Built, Designed, Implemented, Developed, Optimized)
+• Keep bullets short (1 line each)
+
+------ FORMAT RULES ------
+
+SUMMARY:
+• 2–3 lines max
+• Role-focused
+• Skills + goal
+
+EDUCATION:
+• Degree – Institution – Year
+• One clean block
+
+EXPERIENCE:
+• Company / Role
+• 2–4 bullets max
+• Impact-driven
+
+PROJECTS:
+For each project:
+Project Name — Tech Stack
+• What was built
+• Key features / logic
+• Outcome / learning
+
+SKILLS:
+Categorize properly.
+
+LANGUAGES:
+Comma-separated.
+
+CERTIFICATIONS:
+One per line.
+
+--------------------------------
+
+Return ONLY valid JSON with EXACT keys below:
 
 {
   "name": "",
@@ -88,35 +127,21 @@ JSON SCHEMA (ALL keys must exist):
   "interests": ""
 }
 
-GLOBAL RULES:
-- Resume tone only (not first-person).
-- If data is missing, return "" (empty string).
-- NEVER invent companies, dates, roles, degrees, or achievements.
-- Use bullet formatting with "•" and line breaks for projects & experience.
-- Skills fields should be comma-separated.
-- Summary = 2–4 concise lines.
-- Headline examples: "CS Student", "Frontend Developer", "Software Engineer".
-
-${levelRules}
-
-USER TEXT:
+CANDIDATE INPUT:
 """${text}"""
-`.trim();
+`;
 
   const body = {
     model: MODEL,
-    temperature: 0.25,
+    temperature: 0.15,
     response_format: { type: 'json_object' },
     messages: [
       {
         role: 'system',
         content:
-          'You are a strict ATS resume engine. Respond ONLY with a valid JSON object matching the exact schema.'
+          'You are a strict ATS resume generator. You ONLY output valid JSON.'
       },
-      {
-        role: 'user',
-        content: userPrompt
-      }
+      { role: 'user', content: prompt }
     ]
   };
 
@@ -130,77 +155,52 @@ USER TEXT:
   });
 
   if (!resp.ok) {
-    const err = await resp.text();
-    throw new Error(`Groq HTTP ${resp.status}: ${err}`);
+    throw new Error(await resp.text());
   }
 
   const data = await resp.json();
-  const content = data?.choices?.[0]?.message?.content;
-  if (!content) throw new Error('Empty Groq response');
+  const textOut = data?.choices?.[0]?.message?.content;
+  if (!textOut) throw new Error('Empty Groq response');
 
-  try {
-    return JSON.parse(content);
-  } catch (e) {
-    console.error('❌ Non-JSON Groq output:', content);
-    throw new Error('Groq returned invalid JSON');
-  }
+  return JSON.parse(textOut);
 }
 
-// ======================
-// CLEANER
-// ======================
+/* =======================
+   CLEANER
+======================= */
 function cleanSection(str) {
   const s = String(str || '').trim();
   if (!s) return '';
-  if (['na', 'n/a', 'none', 'nil'].includes(s.toLowerCase())) return '';
+  if (['n/a','na','none','nil','no'].includes(s.toLowerCase())) return '';
   return s;
 }
 
-// ======================
-// API ENDPOINT
-// ======================
+/* =======================
+   API ROUTE
+======================= */
 app.post('/api/build', async (req, res) => {
   try {
-    const { text, experienceLevel } = req.body || {};
+    const { text, experienceLevel } = req.body;
+    if (!text) return res.status(400).json({ error: 'No input text' });
 
-    if (!text || !text.trim()) {
-      return res.status(400).json({ error: 'No text provided' });
+    const raw = await callGroq(text, experienceLevel || 'fresher');
+
+    const safe = {};
+    for (const key in raw) {
+      safe[key] = cleanSection(raw[key]);
     }
-
-    const raw = await callGroq(text, experienceLevel);
-
-    const safe = {
-      name: cleanSection(raw.name),
-      email: cleanSection(raw.email),
-      phone: cleanSection(raw.phone),
-      location: cleanSection(raw.location),
-      headline: cleanSection(raw.headline),
-      summary: cleanSection(raw.summary),
-      education: cleanSection(raw.education),
-      experience: cleanSection(raw.experience),
-      projects: cleanSection(raw.projects),
-      skillsProgramming: cleanSection(raw.skillsProgramming),
-      skillsFrontend: cleanSection(raw.skillsFrontend),
-      skillsDatabase: cleanSection(raw.skillsDatabase),
-      skillsOther: cleanSection(raw.skillsOther),
-      skillsSoft: cleanSection(raw.skillsSoft),
-      languages: cleanSection(raw.languages),
-      certifications: cleanSection(raw.certifications),
-      interests: cleanSection(raw.interests)
-    };
 
     res.json(safe);
   } catch (err) {
-    console.error('❌ /api/build error:', err);
-    res.status(500).json({ error: err.message || 'Resume build failed' });
+    console.error(err);
+    res.status(500).json({ error: err.message });
   }
 });
 
-// ======================
-// START SERVER
-// ======================
+/* =======================
+   START
+======================= */
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ FastResume running at http://localhost:${PORT}`);
-  console.log(`✅ Groq model: ${MODEL}`);
 });
