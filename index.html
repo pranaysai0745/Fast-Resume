@@ -599,10 +599,10 @@
         <div class="resume-header-sub">${esc(d.headline)}</div>
         <div class="resume-header-contact">${esc([d.location,d.phone,d.email].filter(Boolean).join(' · '))}</div>
       </div>
-      ${sec('Profile Summary',d.summary)}
+      ${sec(d.summaryLabel,d.summary)}
       ${sec('Education',d.education)}
       ${sec(d.expLabel,d.experience)}
-      ${sec('Projects',d.projects)}
+      ${sec(d.projectsLabel,d.projects)}
       ${sec('Skills',[
         d.skillsProgramming && 'Programming: '+d.skillsProgramming,
         d.skillsFrontend && 'Frontend: '+d.skillsFrontend,
@@ -636,10 +636,10 @@
         <div>
           <div class="resume-header-name" style="text-align:left">${esc(d.name)}</div>
           <div class="resume-header-sub" style="text-align:left">${esc(d.headline)}</div>
-          ${sec('Profile Summary',d.summary)}
+          ${sec(d.summaryLabel,d.summary)}
           ${sec('Education',d.education)}
           ${sec(d.expLabel,d.experience)}
-          ${sec('Projects',d.projects)}
+          ${sec(d.projectsLabel,d.projects)}
         </div>
       </div>`;
     }
@@ -658,12 +658,12 @@
         <div>
           <div class="resume-header-name" style="text-align:left">${esc(d.name)}</div>
           <div class="resume-header-sub" style="text-align:left">${esc(d.headline)}</div>
-          ${sec('Profile Summary',d.summary)}
+          ${sec(d.summaryLabel,d.summary)}
           ${sec(d.expLabel,d.experience)}
           ${sec('Education',d.education)}
         </div>
         <div>
-          ${sec('Projects',d.projects)}
+          ${sec(d.projectsLabel,d.projects)}
           ${sec('Skills',skillsText)}
           ${sec('Languages',d.languages)}
           ${sec('Certifications',d.certifications)}
@@ -686,12 +686,12 @@
       <div class="resume-header-name">${esc(d.name)}</div>
       <div class="resume-header-sub">${esc(d.headline)}</div>
       <hr>
-      ${sec('About Me',d.summary)}
+      ${sec(d.summaryLabel,d.summary)}
       <div class="resume-balanced">
         ${sec('Education',d.education)}
         ${sec(d.expLabel,d.experience)}
       </div>
-      ${sec('Projects',d.projects)}
+      ${sec(d.projectsLabel,d.projects)}
       ${sec('Skills',skillsText)}
       ${sec('Languages',d.languages)}
       ${sec('Achievements / Certifications',d.certifications)}
@@ -721,10 +721,10 @@
           ${d.certifications ? `<div class="photo-left-title">Certifications</div><div class="photo-left-text">${formatText(d.certifications)}</div>`:''}
         </div>
         <div>
-          ${sec('Profile Summary',d.summary)}
+          ${sec(d.summaryLabel,d.summary)}
           ${sec('Education',d.education)}
           ${sec(d.expLabel,d.experience)}
-          ${sec('Projects',d.projects)}
+          ${sec(d.projectsLabel,d.projects)}
         </div>
       </div>`;
     }
@@ -751,9 +751,9 @@
         </div>
         <div class="bold-body-cols">
           <div>
-            ${sec('Profile Summary',d.summary)}
+            ${sec(d.summaryLabel,d.summary)}
             ${sec(d.expLabel,d.experience)}
-            ${sec('Projects',d.projects)}
+            ${sec(d.projectsLabel,d.projects)}
           </div>
           <div>
             ${sec('Education',d.education)}
@@ -778,6 +778,16 @@
 
     /* ===== RENDER ===== */
     function render(){
+      const summaryLabel =
+        state.experienceLevel === 'fresher'
+          ? 'Career Objective'
+          : 'Profile Summary';
+
+      const projectsLabel =
+        state.experienceLevel === 'fresher'
+          ? 'Academic & Personal Projects'
+          : 'Projects';
+
       const data = {
         ...state,
         name: state.name || 'Your Name',
@@ -787,7 +797,9 @@
           : 'SOFTWARE ENGINEER'),
         expLabel: state.experienceLevel==='fresher'
           ? 'Internships / Experience'
-          : 'Professional Experience'
+          : 'Professional Experience',
+        summaryLabel,
+        projectsLabel
       };
 
       const tpl = tplMap[state.template] || tplClassic;
