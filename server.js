@@ -4,7 +4,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
-// If your Node version < 18, uncomment and install node-fetch
+// Node 18+ has fetch built-in
+// If Node < 18, install node-fetch and uncomment:
 // const fetch = require('node-fetch');
 
 const app = express();
@@ -12,38 +13,60 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(__dirname)); // serve index.html + assets
 
+// ======================
+// ENV + GROQ CONFIG
+// ======================
 const API_KEY = process.env.GROQ_API_KEY;
 if (!API_KEY) {
-  console.error('❌ GROQ_API_KEY missing in .env file');
+  console.error('❌ GROQ_API_KEY missing in environment');
   process.exit(1);
 }
 
-// current Groq model
-const MODEL = 'llama-3.3-70b-versatile';   // or 'llama3-70b-8192'
+const MODEL = 'llama-3.3-70b-versatile';
 const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
 
+// ======================
+// GROQ CALL
+// ======================
 async function callGroq(text, experienceLevel) {
-  const levelText =
-    experienceLevel === 'fresher'
-      ? 'fresher / student'
-      : experienceLevel === 'junior'
-      ? 'junior engineer (0–2 years)'
-      : 'experienced engineer (2+ years)';
+  const level = experienceLevel || 'fresher';
+
+  const levelDescription =
+    level === 'fresher'
+      ? 'a student / fresher with 0 years of full-time experience'
+      : level === 'junior'
+      ? 'a junior engineer with 0–2 years of professional experience'
+      : 'an experienced engineer with 2+ years of professional experience';
+
+  const levelRules =
+    level === 'fresher'
+      ? `
+Fresher rules:
+- Do NOT invent internships, jobs, companies, or job titles.
+- If no real work experience exists, set "experience": "".
+- Emphasise EDUCATION, PROJECTS, and SKILLS.
+`
+      : `
+Experienced rules:
+- Use experience ONLY if explicitly mentioned.
+- Group roles by company.
+- Focus on responsibilities, technologies, and measurable impact.
+- Do NOT invent dates, metrics, or companies.
+`;
 
   const userPrompt = `
-You are an ATS resume generator for ${levelText}.
+You are an ATS-optimised resume generator.
 
-The user gives one paragraph describing:
-- education
-- skills
-- projects
-- internships / work experience
-- certifications
-- achievements
-- languages
-- interests
+Candidate profile:
+- ${levelDescription}
 
-Return a CLEAN JSON object with these EXACT keys (lowerCamelCase):
+TASK:
+- Read the user text carefully.
+- Extract ONLY real information stated or clearly implied.
+- Rephrase into clean, professional resume wording.
+- Output ONE valid JSON object ONLY.
+
+JSON SCHEMA (ALL keys must exist):
 
 {
   "name": "",
@@ -65,28 +88,35 @@ Return a CLEAN JSON object with these EXACT keys (lowerCamelCase):
   "interests": ""
 }
 
-Rules:
-- Use short, professional English in resume style.
-- If something is not provided, use an empty string "".
-- Do NOT invent fake companies or degrees, but you may lightly rewrite / clean sentences.
-- For projects, combine all projects into one text block with bullets.
-- For experience, combine all internships / jobs.
+GLOBAL RULES:
+- Resume tone only (not first-person).
+- If data is missing, return "" (empty string).
+- NEVER invent companies, dates, roles, degrees, or achievements.
+- Use bullet formatting with "•" and line breaks for projects & experience.
+- Skills fields should be comma-separated.
+- Summary = 2–4 concise lines.
+- Headline examples: "CS Student", "Frontend Developer", "Software Engineer".
 
-Student text:
+${levelRules}
+
+USER TEXT:
 """${text}"""
 `.trim();
 
   const body = {
     model: MODEL,
-    temperature: 0.2,
+    temperature: 0.25,
     response_format: { type: 'json_object' },
     messages: [
       {
         role: 'system',
         content:
-          'You are an expert ATS-friendly resume builder that returns ONLY valid JSON objects.'
+          'You are a strict ATS resume engine. Respond ONLY with a valid JSON object matching the exact schema.'
       },
-      { role: 'user', content: userPrompt }
+      {
+        role: 'user',
+        content: userPrompt
+      }
     ]
   };
 
@@ -100,41 +130,44 @@ Student text:
   });
 
   if (!resp.ok) {
-    const errText = await resp.text();
-    throw new Error(`Groq HTTP ${resp.status}: ${errText}`);
+    const err = await resp.text();
+    throw new Error(`Groq HTTP ${resp.status}: ${err}`);
   }
 
   const data = await resp.json();
-  const textOut = data?.choices?.[0]?.message?.content;
-  if (!textOut) throw new Error('Empty response from Groq');
+  const content = data?.choices?.[0]?.message?.content;
+  if (!content) throw new Error('Empty Groq response');
 
-  let parsed;
   try {
-    parsed = JSON.parse(textOut);
+    return JSON.parse(content);
   } catch (e) {
-    console.error('Groq raw content was not JSON:', textOut);
-    throw new Error('Groq returned non-JSON: ' + e.message);
+    console.error('❌ Non-JSON Groq output:', content);
+    throw new Error('Groq returned invalid JSON');
   }
-  return parsed;
 }
 
+// ======================
+// CLEANER
+// ======================
 function cleanSection(str) {
   const s = String(str || '').trim();
   if (!s) return '';
-  const lower = s.toLowerCase();
-  if (['n/a', 'na', 'none', 'nil', 'no'].includes(lower)) return '';
+  if (['na', 'n/a', 'none', 'nil'].includes(s.toLowerCase())) return '';
   return s;
 }
 
+// ======================
+// API ENDPOINT
+// ======================
 app.post('/api/build', async (req, res) => {
   try {
     const { text, experienceLevel } = req.body || {};
+
     if (!text || !text.trim()) {
       return res.status(400).json({ error: 'No text provided' });
     }
 
-    const level = experienceLevel || 'fresher';
-    const raw = await callGroq(text, level);
+    const raw = await callGroq(text, experienceLevel);
 
     const safe = {
       name: cleanSection(raw.name),
@@ -163,8 +196,11 @@ app.post('/api/build', async (req, res) => {
   }
 });
 
+// ======================
+// START SERVER
+// ======================
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`✅ FastResume running at http://localhost:${PORT}`);
-  console.log(`   Using Groq model: ${MODEL}`);
+  console.log(`✅ Groq model: ${MODEL}`);
 });
