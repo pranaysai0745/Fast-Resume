@@ -3,6 +3,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const path = require('path'); // ⬅️ for /builder route
 
 // If your Node version < 18, uncomment and install node-fetch
 // const fetch = require('node-fetch');
@@ -200,6 +201,13 @@ app.post('/api/build', async (req, res) => {
     console.error('❌ /api/build error:', err);
     res.status(500).json({ error: err.message || 'Resume build failed' });
   }
+});
+
+/**
+ * GET /builder — serve the resume builder page
+ */
+app.get('/builder', (req, res) => {
+  res.sendFile(path.join(__dirname, 'builder.html'));
 });
 
 /**
