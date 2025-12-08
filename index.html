@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LFJ5MLRZPP"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-LFJ5MLRZPP');
-</script>
   <meta charset="UTF-8">
   <title>FastResume</title>
+
+  <!-- ✅ GOOGLE ANALYTICS -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFJ5MLRZPP"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-LFJ5MLRZPP');
+  </script>
+
   <style>
     body{
       font-family: Arial, sans-serif;
@@ -39,15 +41,28 @@
       color:white;
       cursor:pointer;
     }
+    button:hover{
+      opacity:0.9;
+    }
   </style>
 </head>
 <body>
+
   <div class="box">
     <h1>FastResume</h1>
     <p>AI Resume Builder for Students</p>
-    <button onclick="location.href='/builder'">
+
+    <!-- ✅ EVENT TRACKED BUTTON -->
+    <button onclick="
+      gtag('event','build_resume_home',{
+        event_category:'navigation',
+        event_label:'Homepage Build Resume'
+      });
+      location.href='/builder';
+    ">
       Build Resume
     </button>
   </div>
+
 </body>
 </html>
