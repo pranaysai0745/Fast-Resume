@@ -6,175 +6,239 @@
   <meta name="description" content="FastResume is a free AI resume builder for students and freshers. Paste your details once and get an ATS-friendly resume in seconds.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <!-- AdSense -->
   <script async
     src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8109811196673278"
     crossorigin="anonymous"></script>
 
-  <!-- Uses existing dark theme styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="page-wrap">
-  <main>
-    <!-- NAV -->
-    <div class="nav">
-      <div>
-        <div class="nav-logo">FASTRESUME</div>
-        <div class="nav-tag">AI Resume Builder for Students</div>
-      </div>
-      <div class="nav-links">
+<div class="page-shell">
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a href="/" class="nav-brand">
+        <div class="nav-logo-circle">FR</div>
+        <div class="nav-brand-text">
+          <span class="nav-title">FastResume</span>
+          <span class="nav-subtitle">AI resumes for students</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
         <a href="/builder">Builder</a>
         <a href="/about">About</a>
         <a href="/contact">Contact</a>
-      </div>
+        <a href="/builder" class="nav-cta">Start free</a>
+      </nav>
+
+      <!-- mobile menu icon (non-functional, just visual for now) -->
+      <button class="nav-burger" aria-label="Menu">
+        <span></span><span></span>
+      </button>
     </div>
+  </header>
 
-    <!-- HERO -->
+  <!-- ===== MAIN CONTENT ===== -->
+  <main class="main-wrapper">
+
+    <!-- ===== HERO ===== -->
     <section class="hero">
-      <!-- left -->
-      <div>
-        <h1 class="hero-title">
-          Build an <span class="hero-highlight">ATS-friendly resume</span> in minutes.
+      <div class="hero-left">
+        <div class="hero-pill">New • Made for B.Tech / CS students</div>
+
+        <h1 class="hero-heading">
+          Build a <span class="hero-highlight">free resume</span> in a few clicks.
         </h1>
-        <p class="hero-subtitle">
-          Paste your details once. FastResume uses AI (Llama 3 via Groq) to create a clean,
-          professional resume that is easy to download and share.
+
+        <p class="hero-body">
+          Paste your details once. FastResume uses AI (Llama&nbsp;3 via Groq) to turn it into a clean,
+          ATS-friendly resume that looks good on campus portals and job applications.
         </p>
 
-        <div class="hero-badges">
-          <span class="badge">Free for students</span>
-          <span class="badge">No login required</span>
-          <span class="badge">Privacy-friendly</span>
+        <div class="hero-actions">
+          <a href="/builder" class="btn btn-primary">Create my resume</a>
+          <a href="#how" class="btn btn-ghost">See how it works</a>
         </div>
 
+        <div class="hero-stats">
+          <div class="stat-pill">
+            <span class="stat-number">48%</span>
+            <span class="stat-label">more likely to get noticed*</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-number">0₹</span>
+            <span class="stat-label">always free for students</span>
+          </div>
+        </div>
+
+        <p class="hero-footnote">
+          *When your resume is clean, structured and keyword-friendly compared to an unformatted resume.
+        </p>
+      </div>
+
+      <div class="hero-right">
+        <div class="resume-card">
+          <div class="resume-card-header">
+            <div class="avatar-circle">S</div>
+            <div>
+              <div class="resume-name">Charan Sai</div>
+              <div class="resume-role">Computer Science Graduate</div>
+            </div>
+            <span class="resume-chip">ATS score 86%</span>
+          </div>
+
+          <div class="resume-card-body">
+            <div class="resume-section">
+              <div class="resume-section-title">Summary</div>
+              <p>
+                Final-year CS student skilled in web development and machine learning.
+                Enjoys building real-world projects and solving problems using code.
+              </p>
+            </div>
+
+            <div class="resume-columns">
+              <div class="resume-column">
+                <div class="resume-section-title">Skills</div>
+                <ul>
+                  <li>C, C++, Java, Python</li>
+                  <li>HTML, CSS, JavaScript</li>
+                  <li>React, Node.js, SQL</li>
+                </ul>
+              </div>
+              <div class="resume-column">
+                <div class="resume-section-title">Projects</div>
+                <ul>
+                  <li>Health chatbot using RAG &amp; Groq</li>
+                  <li>Construction management dashboard</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="resume-section">
+              <div class="resume-section-title">Education</div>
+              <p>B.Tech in Computer Science – 2025</p>
+              <p>JSSSTU • CGPA 8.1 / 10</p>
+            </div>
+          </div>
+
+          <div class="resume-floating-badges">
+            <div class="bubble bubble-green">AI-polished text</div>
+            <div class="bubble bubble-blue">Single-click PDF</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TRUST / TAGLINE ===== -->
+    <section class="trust-strip">
+      <p>Designed for students • No login • Works in your browser • Export to PDF</p>
+    </section>
+
+    <!-- ===== FEATURE ROW ===== -->
+    <section class="feature-section">
+      <h2 class="section-heading">Why students like FastResume</h2>
+      <div class="feature-grid">
+        <article class="feature-card">
+          <h3>Built for freshers</h3>
+          <p>
+            The AI prompt is tuned for students and first jobs, not senior managers.
+            It highlights projects, internships and skills instead of fake experience.
+          </p>
+        </article>
+        <article class="feature-card">
+          <h3>ATS-friendly layout</h3>
+          <p>
+            Clean fonts, clear sections and simple structure make it easy for recruiters
+            and applicant tracking systems to scan your resume.
+          </p>
+        </article>
+        <article class="feature-card">
+          <h3>Instant preview</h3>
+          <p>
+            Edit text on the left, see the resume update on the right in real-time,
+            then print or save to PDF directly from your browser.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-section" id="how">
+      <div class="how-header">
+        <h2 class="section-heading">How FastResume works</h2>
+        <p class="how-sub">
+          It’s intentionally simple – no accounts, no long forms, just three quick steps.
+        </p>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3>Paste your details</h3>
+          <p>
+            Go to the builder and paste one paragraph about your skills, education, projects,
+            internships and certifications.
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3>Let AI clean &amp; format</h3>
+          <p>
+            FastResume sends it to Groq (Llama&nbsp;3), rewrites the content in
+            professional English and fills each resume section automatically.
+          </p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3>Pick template &amp; download</h3>
+          <p>
+            Switch between templates, tweak any field manually and print or
+            save as PDF for campus placements and job portals.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CTA STRIP ===== -->
+    <section class="cta-section">
+      <div class="cta-inner">
         <div>
-          <a href="/builder" class="primary-btn">Start building now</a>
-          <a href="#how" class="text-btn">How it works</a>
-        </div>
-
-        <p class="hero-meta">
-          Best for B.Tech / engineering students, CS/IT freshers, and early-career software roles.
-        </p>
-      </div>
-
-      <!-- right card preview -->
-      <div class="hero-card">
-        <div class="hero-card-top">
-          <span class="hero-card-label">Resume preview</span>
-          <span class="hero-card-chip">Sample student resume</span>
-        </div>
-        <div class="hero-card-main">
-          <div class="hero-card-name">YOUR NAME</div>
-          <div class="hero-card-line">CS Student · Web Development · Problem Solving</div>
-
-          <div class="hero-card-section">
-            <div class="hero-card-section-title">Career Objective</div>
-            <div class="hero-card-section-body">
-              Looking for entry-level software roles where I can build real-world projects,
-              learn from experienced engineers, and contribute to impactful products.
-            </div>
-          </div>
-
-          <div class="hero-card-section">
-            <div class="hero-card-section-title">Skills</div>
-            <div class="hero-card-section-body">
-              • Programming: C, C++, Java, Python<br>
-              • Web: HTML, CSS, JavaScript, React<br>
-              • Tools: Git, GitHub, VS Code
-            </div>
-          </div>
-
-          <div class="hero-card-section">
-            <div class="hero-card-section-title">Academic projects</div>
-            <div class="hero-card-section-body">
-              • Built a bilingual health chatbot using RAG and FAISS on Groq.<br>
-              • Developed a construction management website for tracking progress &amp; budget.
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FEATURES (short) -->
-    <section>
-      <h2>Why students like FastResume</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-title">Made for freshers</div>
-          <p class="feature-desc">
-            The AI prompt is tuned for students and junior engineers: more focus on projects,
-            internships, and skills – not fake experience.
+          <h2>Ready to create your first AI resume?</h2>
+          <p>
+            It takes less than 5 minutes. No signup needed – just your details and a browser.
           </p>
         </div>
-        <div class="feature-card">
-          <div class="feature-title">ATS-friendly layout</div>
-          <p class="feature-desc">
-            Clean fonts, clear sections, and simple structure that parses well in
-            most applicant tracking systems.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-title">Instant preview</div>
-          <p class="feature-desc">
-            See the resume update as you edit fields. Pick from multiple templates,
-            then print or save as PDF.
-          </p>
-        </div>
+        <a href="/builder" class="btn btn-primary btn-large">Open the builder</a>
       </div>
     </section>
 
-    <!-- HOW IT WORKS (compact) -->
-    <section id="how">
-      <h2>How FastResume works</h2>
-      <div class="steps-list">
-        <div class="step">
-          <div class="step-num">Step 1</div>
-          <div class="step-title">Paste your details</div>
-          <div class="step-body">
-            Go to the builder and paste one paragraph about your skills,
-            education, projects, internships, and certifications.
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">Step 2</div>
-          <div class="step-title">AI cleans &amp; formats</div>
-          <div class="step-body">
-            FastResume sends it to Groq (Llama 3), rewrites content in professional
-            English, and fills each resume section automatically.
-          </div>
-        </div>
-        <div class="step">
-          <div class="step-num">Step 3</div>
-          <div class="step-title">Download &amp; apply</div>
-          <div class="step-body">
-            Choose a template, tweak any field, then print or save to PDF for placements,
-            internships, or job portals.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SMALL CTA TO OTHER PAGES -->
-    <section>
-      <h2>Want more details?</h2>
-      <p>
-        See who FastResume is for, and read common questions on the
-        <a href="/about">About &amp; FAQ page</a>.
-      </p>
-    </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <div>
-      <a href="/about">About</a> |
-      <a href="/privacy">Privacy Policy</a> |
-      <a href="/terms">Terms</a> |
-      <a href="/contact">Contact</a>
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <div class="footer-title">FastResume</div>
+        <p class="footer-text">
+          A small tool to help students and freshers generate clean, professional resumes using AI.
+        </p>
+      </div>
+      <div class="footer-links">
+        <a href="/about">About</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms</a>
+        <a href="/contact">Contact</a>
+      </div>
     </div>
-    <div style="margin-top:8px;">© 2025 FastResume</div>
+    <p class="footer-copy">© 2025 FastResume. Built by students.</p>
   </footer>
+
 </div>
 </body>
 </html>
