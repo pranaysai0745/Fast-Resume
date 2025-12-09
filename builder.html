@@ -301,8 +301,7 @@
     .bold-header-bar{
       background:#111827;
       color:white;
-      padding:10
-px 14px;
+      padding:10px 14px;
       border-radius:8px;
       margin-bottom:10px;
       display:flex;
@@ -356,15 +355,27 @@ px 14px;
       }
     }
 
+    /* ===== CLEAN PRINT / PDF (NO WATERMARK, ONLY RESUME) ===== */
     @media print {
       body{
-        background:#ffffff;
+        background:#ffffff !important;
         padding:0;
         margin:0;
+        color:#000000 !important;
       }
+
+      /* hide header + site footer on PDF */
+      header,
+      footer{
+        display:none !important;
+      }
+
+      /* hide left editor panel completely */
       .left{
         display:none !important;
       }
+
+      /* focus only on the resume preview */
       .right{
         border:none;
         width:100%;
@@ -376,6 +387,24 @@ px 14px;
         margin:0;
         padding:24px 40px;
         font-size:12px;
+      }
+
+      /* hide UI / buttons / chips if any remain */
+      .btn-row,
+      .quick-wrap,
+      .ats-chip-left,
+      .controls,
+      .toolbar,
+      .top-bar{
+        display:none !important;
+      }
+
+      /* in case any watermark classes appear in future */
+      .watermark,
+      .branding,
+      .print-watermark,
+      .ai-watermark{
+        display:none !important;
       }
     }
   </style>
@@ -527,7 +556,7 @@ px 14px;
     </div>
   </div>
 
-  <!-- FOOTER -->
+  <!-- FOOTER (only for website, hidden in PDF) -->
   <footer style="
     max-width:1200px;
     margin:16px auto 0 auto;
