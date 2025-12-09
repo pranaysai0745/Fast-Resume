@@ -3,7 +3,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const path = require('path'); // ⬅️ for static HTML routes
+const path = require('path'); // for static HTML routes
 
 // If your Node version < 18, uncomment and install node-fetch
 // const fetch = require('node-fetch');
@@ -225,6 +225,11 @@ app.get('/about', (req, res) => {
 // Privacy Policy page
 app.get('/privacy', (req, res) => {
   res.sendFile(path.join(__dirname, 'privacy.html'));
+});
+
+// Terms page
+app.get('/terms', (req, res) => {
+  res.sendFile(path.join(__dirname, 'terms.html'));
 });
 
 // Contact page
