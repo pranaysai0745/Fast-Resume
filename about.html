@@ -1,37 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>About Us | FastResume</title>
+  <meta charset="UTF-8" />
+  <title>About FastResume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    :root{
+      --bg:#0b1020;
+      --card:#0f172a;
+      --border:#1f2933;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#3b82f6;
+    }
+    *{box-sizing:border-box}
     body{
-      font-family: Arial, sans-serif;
-      margin:40px;
-      line-height:1.6;
-      color:#111827;
+      margin:0;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+      background:radial-gradient(80% 80% at 50% -10%, #111827 0%, #020617 60%);
+      color:var(--text);
+    }
+
+    /* NAV */
+    .nav{
+      max-width:1200px;
+      margin:0 auto;
+      padding:18px 20px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .logo{
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:.04em;
+    }
+    .nav a{
+      color:var(--muted);
+      text-decoration:none;
+      margin-left:18px;
+      font-size:14px;
+    }
+    .nav a:hover{color:white}
+
+    /* PAGE */
+    .wrap{
+      max-width:900px;
+      margin:40px auto 80px;
+      padding:0 20px;
     }
     h1{
-      color:#0f172a;
+      font-size:32px;
+      margin-bottom:12px;
+    }
+    .sub{
+      color:var(--muted);
+      line-height:1.6;
+      max-width:700px;
+    }
+
+    .card{
+      background:rgba(15,23,42,.85);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:24px;
+      margin-top:28px;
+    }
+    h2{
+      margin:0 0 12px;
+      font-size:20px;
+    }
+    ul{
+      padding-left:18px;
+      line-height:1.8;
+      color:#d1d5db;
+    }
+
+    .highlight{
+      display:grid;
+      gap:16px;
+    }
+    .feature{
+      padding:16px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background:#0b1220;
+    }
+    .feature strong{
+      color:white;
+      display:block;
+      margin-bottom:6px;
+    }
+
+    /* FOOTER */
+    footer{
+      border-top:1px solid var(--border);
+      padding:20px;
+      text-align:center;
+      font-size:13px;
+      color:var(--muted);
+    }
+    footer a{
+      color:var(--muted);
+      text-decoration:none;
+      margin:0 8px;
+    }
+    footer a:hover{color:white}
+
+    @media(max-width:600px){
+      h1{font-size:26px}
     }
   </style>
 </head>
 <body>
 
-<h1>About FastResume</h1>
+  <!-- NAVBAR -->
+  <div class="nav">
+    <div class="logo">FastResume</div>
+    <div>
+      <a href="/">Home</a>
+      <a href="/builder">Builder</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </div>
 
-<p><b>FastResume</b> is an AI-powered resume builder designed especially for students and freshers.</p>
+  <!-- CONTENT -->
+  <div class="wrap">
+    <h1>About FastResume</h1>
+    <p class="sub">
+      FastResume is an AI-powered resume builder designed especially for students,
+      freshers, and early-career job seekers. Our goal is to simplify resume creation
+      and help candidates generate ATS-friendly resumes within minutes.
+    </p>
 
-<p>Our goal is to simplify resume creation using artificial intelligence so that anyone can generate a professional, ATS-friendly resume in minutes.</p>
+    <div class="card">
+      <h2>Why FastResume?</h2>
+      <ul>
+        <li>No signup or login required</li>
+        <li>Designed specifically for students & freshers</li>
+        <li>Optimised for ATS (Applicant Tracking Systems)</li>
+        <li>Free and privacy-friendly</li>
+      </ul>
+    </div>
 
-<h2>Why FastResume?</h2>
-<ul>
-  <li>Easy to use</li>
-  <li>No signup required</li>
-  <li>Optimized for ATS systems</li>
-  <li>Built for students and job seekers</li>
-</ul>
+    <div class="card">
+      <h2>What makes it different</h2>
+      <div class="highlight">
+        <div class="feature">
+          <strong>AI-powered formatting</strong>
+          Uses Groq + Llama 3 to clean, structure, and improve resume content automatically.
+        </div>
+        <div class="feature">
+          <strong>Student-focused prompts</strong>
+          Emphasis on projects, skills, and internships—no fake experience.
+        </div>
+        <div class="feature">
+          <strong>Instant preview & download</strong>
+          Edit, preview, and download resumes as PDF directly from the browser.
+        </div>
+      </div>
+    </div>
 
-<p>FastResume is built and maintained as an educational and productivity platform.</p>
+    <div class="card">
+      <h2>Our mission</h2>
+      <p class="sub">
+        FastResume is built and maintained as an educational and productivity platform.
+        We believe every student deserves a professional resume without paying fees
+        or sharing personal data.
+      </p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="/about">About</a> |
+    <a href="/privacy">Privacy</a> |
+    <a href="/terms">Terms</a> |
+    <a href="/contact">Contact</a>
+    <div style="margin-top:8px;">© 2025 FastResume</div>
+  </footer>
 
 </body>
 </html>
