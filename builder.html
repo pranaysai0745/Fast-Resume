@@ -2,52 +2,190 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FastResume — Auto-build (Groq)</title>
+  <title>FastResume — AI Resume Builder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="FastResume AI resume builder for students and freshers. Paste your details once and generate an ATS-friendly resume."
+  />
+
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#f4f5fb;
-      --card:#ffffff;
+      --bg:#020617;
+      --bg-soft:#020617;
+      --card:#0b1220;
+      --card-inner:#ffffff;
       --accent:#2563eb;
-      --border:#e2e8f0;
-      --muted:#6b7280;
-      --text:#0f172a;
+      --border:#1f2937;
+      --muted:#9ca3af;
+      --text:#f9fafb;
       --side:#f3f4f6;
       --line:#111827;
     }
-    *{ box-sizing:border-box; }
+
+    *{
+      box-sizing:border-box;
+    }
+
     body{
       margin:0;
-      padding:24px;
-      background:var(--bg);
+      padding:0;
+      min-height:100vh;
+      background:radial-gradient(circle at top, #0f172a 0, #020617 55%, #000 100%);
       font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
       color:var(--text);
     }
-    .container{
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .page{
       max-width:1200px;
       margin:0 auto;
+      padding:16px 16px 32px;
       display:flex;
-      gap:24px;
-      align-items:flex-start;
+      flex-direction:column;
+      min-height:100vh;
     }
-    .left,.right{
-      background:var(--card);
-      border-radius:12px;
-      border:1px solid var(--border);
-      padding:18px 20px;
-    }
-    .left{ width:42%; }
-    .right{ width:58%; min-height:620px; }
 
-    h1{
-      margin:0 0 6px;
-      font-size:22px;
+    /* NAVBAR */
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom:16px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(15,23,42,0.9);
+      border:1px solid rgba(148,163,184,0.3);
+      backdrop-filter:blur(12px);
+    }
+    .nav-left{
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .nav-logo{
+      font-weight:800;
+      font-size:18px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+    .nav-tag{
+      font-size:11px;
+      color:var(--muted);
+    }
+    .nav-links{
+      display:flex;
+      gap:14px;
+      font-size:13px;
+    }
+    .nav-links a{
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+    }
+    .nav-links a:hover{
+      border-color:rgba(148,163,184,0.6);
+      background:rgba(15,23,42,0.9);
+    }
+    .nav-links .nav-primary{
+      border-color:rgba(37,99,235,0.9);
+      background:rgba(37,99,235,0.15);
+      color:#bfdbfe;
+    }
+
+    /* MAIN WRAPPER CARD */
+    .shell{
+      background:rgba(15,23,42,0.95);
+      border-radius:20px;
+      border:1px solid rgba(148,163,184,0.3);
+      padding:18px 18px 20px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+      flex:1;
+    }
+
+    .shell-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+    }
+    .shell-left h1{
+      margin:0 0 4px;
+      font-size:21px;
       font-weight:800;
     }
-    .subtitle{
+    .shell-sub{
+      margin:0;
       font-size:13px;
       color:var(--muted);
-      margin-bottom:12px;
+    }
+    .shell-badge-row{
+      margin-top:6px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+      font-size:11px;
+    }
+    .shell-badge{
+      padding:3px 10px;
+      border-radius:999px;
+      background:rgba(15,118,110,0.15);
+      border:1px solid rgba(45,212,191,0.4);
+      color:#a5f3fc;
+    }
+    .shell-right-chip{
+      font-size:11px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:rgba(37,99,235,0.15);
+      border:1px solid rgba(96,165,250,0.8);
+      color:#dbeafe;
+      white-space:nowrap;
+    }
+
+    /* INNER TWO-COLUMN LAYOUT */
+    .container{
+      display:flex;
+      gap:18px;
+      align-items:flex-start;
+      flex:1;
+      min-height:620px;
+    }
+
+    .left,.right{
+      background:var(--card-inner);
+      border-radius:14px;
+      border:1px solid #e5e7eb;
+      padding:18px 20px;
+      color:#111827;
+    }
+
+    .left{
+      width:42%;
+      max-height:100%;
+      overflow:auto;
+    }
+    .right{
+      width:58%;
+    }
+
+    h2{
+      margin:0 0 6px;
+      font-size:16px;
+      font-weight:700;
+    }
+    .subtitle{
+      font-size:12px;
+      color:#6b7280;
+      margin-bottom:10px;
     }
 
     textarea,input,select,button{
@@ -57,14 +195,17 @@
     textarea,input,select{
       width:100%;
       border-radius:8px;
-      border:1px solid var(--border);
+      border:1px solid #d1d5db;
       padding:8px 10px;
       font-size:13px;
     }
-    textarea{ resize:vertical; min-height:80px; }
+    textarea{
+      resize:vertical;
+      min-height:80px;
+    }
 
     label{
-      font-size:13px;
+      font-size:12px;
       font-weight:600;
       margin:10px 0 4px;
       display:block;
@@ -75,7 +216,9 @@
       display:flex;
       gap:10px;
     }
-    .row > *{ flex:1; }
+    .row > *{
+      flex:1;
+    }
 
     .btn-row{
       display:flex;
@@ -95,6 +238,7 @@
       display:inline-flex;
       align-items:center;
       gap:6px;
+      white-space:nowrap;
     }
     .btn-primary{
       background:var(--accent);
@@ -125,14 +269,14 @@
       white-space:nowrap;
     }
 
-    /* Quick templates row */
+    /* QUICK TEMPLATE BUTTONS */
     .quick-wrap{
-      margin-top:8px;
+      margin-top:6px;
       margin-bottom:4px;
     }
     .quick-label{
       font-size:11px;
-      color:var(--muted);
+      color:#6b7280;
       margin-bottom:4px;
     }
     .quick-templates{
@@ -164,7 +308,7 @@
       color:#e5e7eb;
     }
 
-    /* Resume base */
+    /* Resume preview base */
     .resume{
       max-width:720px;
       margin:0 auto;
@@ -225,24 +369,9 @@
       gap:16px;
     }
     .soft-left{
-      background:var(--side);
+      background:#f3f4f6;
       border-radius:8px;
       padding:10px 12px;
-    }
-    .soft-left-title{
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:#4b5563;
-      border-bottom:1px solid #d4d4d8;
-      padding-bottom:2px;
-      margin-bottom:3px;
-    }
-    .soft-left-block{ margin-bottom:10px; }
-    .soft-left-text{
-      font-size:12px;
-      line-height:1.45;
     }
 
     /* Balanced two-column layout */
@@ -255,18 +384,18 @@
     /* Modern line layout */
     .modern-top-line{
       height:40px;
-      border-left:2px solid var(--line);
+      border-left:2px solid #111827;
       margin:0 auto 14px auto;
     }
 
-    /* Photo sidebar layout */
+    /* Photo layout */
     .resume-photo{
       display:grid;
       grid-template-columns:220px 1fr;
       gap:16px;
     }
     .photo-box{
-      background:var(--side);
+      background:#f3f4f6;
       border-radius:8px;
       padding:12px 12px 10px 12px;
       text-align:center;
@@ -280,24 +409,8 @@
       margin:0 auto 10px auto;
       border:2px solid #e5e7eb;
     }
-    .photo-left-title{
-      font-size:11px;
-      font-weight:700;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:#4b5563;
-      border-bottom:1px solid #d4d4d8;
-      padding-bottom:2px;
-      margin:8px 0 3px;
-      text-align:left;
-    }
-    .photo-left-text{
-      font-size:12px;
-      text-align:left;
-      line-height:1.45;
-    }
 
-    /* Bold header style (developerish) */
+    /* Bold header style */
     .bold-header-bar{
       background:#111827;
       color:white;
@@ -331,17 +444,54 @@
       gap:14px;
     }
 
+    /* Footer */
+    footer{
+      margin-top:16px;
+      font-size:11px;
+      color:var(--muted);
+      text-align:center;
+      padding-top:8px;
+    }
+    footer a{
+      color:var(--muted);
+      text-decoration:none;
+    }
+    footer a:hover{
+      text-decoration:underline;
+    }
+
+    /* RESPONSIVE */
     @media (max-width:960px){
+      .page{
+        padding:12px 10px 20px;
+      }
+      .nav{
+        border-radius:16px;
+        padding:8px 10px;
+      }
+      .nav-tag{
+        display:none;
+      }
+      .nav-links{
+        gap:8px;
+        font-size:12px;
+      }
+      .shell{
+        padding:14px 12px 16px;
+      }
       .container{
         flex-direction:column;
       }
       .left,.right{
         width:100%;
       }
+      .right{
+        min-height:auto;
+      }
+      .bold-body-cols,
       .resume-soft,
       .resume-balanced,
-      .resume-photo,
-      .bold-body-cols{
+      .resume-photo{
         grid-template-columns:1fr;
       }
       .bold-header-bar{
@@ -355,27 +505,28 @@
       }
     }
 
-    /* ===== CLEAN PRINT / PDF (NO WATERMARK, ONLY RESUME) ===== */
+    /* PRINT: CLEAN, NO WATERMARKS */
     @media print {
       body{
         background:#ffffff !important;
         padding:0;
         margin:0;
-        color:#000000 !important;
       }
-
-      /* hide header + site footer on PDF */
-      header,
+      .nav,
+      .shell-header,
+      .left,
       footer{
         display:none !important;
       }
-
-      /* hide left editor panel completely */
-      .left{
-        display:none !important;
+      .page{
+        padding:0;
+        margin:0;
       }
-
-      /* focus only on the resume preview */
+      .shell{
+        border:none;
+        padding:0;
+        margin:0;
+      }
       .right{
         border:none;
         width:100%;
@@ -388,184 +539,193 @@
         padding:24px 40px;
         font-size:12px;
       }
-
-      /* hide UI / buttons / chips if any remain */
-      .btn-row,
-      .quick-wrap,
-      .ats-chip-left,
-      .controls,
-      .toolbar,
-      .top-bar{
-        display:none !important;
-      }
-
-      /* in case any watermark classes appear in future */
-      .watermark,
-      .branding,
-      .print-watermark,
-      .ai-watermark{
-        display:none !important;
-      }
     }
   </style>
 </head>
 <body>
-  <header style="max-width:1200px;margin:0 auto 16px auto;">
-    <div style="display:flex;justify-content:space-between;align-items:center;">
-      <div style="font-weight:800;font-size:20px;">FastResume</div>
-      <div style="font-size:12px;color:#6b7280;">
-        AI Resume Builder
+  <div class="page">
+    <!-- NAVBAR -->
+    <header class="nav">
+      <div class="nav-left">
+        <div class="nav-logo">FASTRESUME</div>
+        <div class="nav-tag">Free AI Resume Builder for Students</div>
       </div>
-    </div>
-  </header>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/builder" class="nav-primary">Builder</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
 
-  <div class="container">
-    <!-- LEFT PANEL -->
-    <div class="left">
-      <h1>FastResume — Auto-build</h1>
-      <div class="subtitle">
-        Paste details once. We auto-generate an ATS-friendly resume.
-      </div>
-
-      <label>Paste about yourself</label>
-      <textarea id="storyInput" placeholder="I am a CSE student / engineer, know Python, Java, HTML, CSS, SQL, built projects, done internships, have certifications..."></textarea>
-
-      <div class="row">
-        <div>
-          <label>Experience level</label>
-          <select id="experienceSelect">
-            <option value="fresher">Fresher / Student</option>
-            <option value="junior">0–2 years</option>
-            <option value="mid">2+ years</option>
-          </select>
+    <!-- MAIN SHELL -->
+    <div class="shell">
+      <div class="shell-header">
+        <div class="shell-left">
+          <h1>Resume Builder</h1>
+          <p class="shell-sub">
+            Step 1: Paste your details · Step 2: Auto-build with AI · Step 3: Download as PDF
+          </p>
+          <div class="shell-badge-row">
+            <span class="shell-badge">Made for students &amp; freshers</span>
+            <span class="shell-badge">ATS-friendly templates</span>
+          </div>
         </div>
-        <div>
-          <label>Choose template</label>
-          <select id="templateSelect">
-            <option value="classic">Classic Student (single column)</option>
-            <option value="softSidebar">Soft Sidebar (2-column)</option>
-            <option value="balanced">Balanced Pro (2-column)</option>
-            <option value="modernLine">Modern Line (single column)</option>
-            <option value="photoSidebar">Photo Sidebar (with picture)</option>
-            <option value="compactAts">Compact ATS</option>
-            <option value="boldHeader">Bold Header</option>
-          </select>
+        <div class="shell-right-chip">
+          Powered by Groq · Llama 3
         </div>
       </div>
 
-      <!-- QUICK TEMPLATE BUTTONS -->
-      <div class="quick-wrap">
-        <div class="quick-label">Quick templates:</div>
-        <div class="quick-templates">
-          <button type="button" class="qbtn" data-template="classic">
-            Classic<br><span>Single column</span>
-          </button>
-          <button type="button" class="qbtn" data-template="softSidebar">
-            Soft Sidebar<br><span>Grey left panel</span>
-          </button>
-          <button type="button" class="qbtn" data-template="balanced">
-            Balanced Pro<br><span>2-column</span>
-          </button>
-          <button type="button" class="qbtn" data-template="modernLine">
-            Modern Line<br><span>Top accent</span>
-          </button>
-          <button type="button" class="qbtn" data-template="photoSidebar">
-            Photo Resume<br><span>With picture</span>
-          </button>
-          <button type="button" class="qbtn" data-template="compactAts">
-            Compact ATS<br><span>Dense single page</span>
-          </button>
-          <button type="button" class="qbtn" data-template="boldHeader">
-            Bold Header<br><span>Developer style</span>
-          </button>
+      <div class="container">
+        <!-- LEFT PANEL -->
+        <div class="left">
+          <h2>Step 1: Paste your details</h2>
+          <div class="subtitle">
+            Paste one paragraph about your education, skills, projects and internships.
+          </div>
+
+          <label>Paste about yourself</label>
+          <textarea id="storyInput" placeholder="I am a CSE student / engineer, know Python, Java, HTML, CSS, SQL, built projects, done internships, have certifications..."></textarea>
+
+          <div class="row">
+            <div>
+              <label>Experience level</label>
+              <select id="experienceSelect">
+                <option value="fresher">Fresher / Student</option>
+                <option value="junior">0–2 years</option>
+                <option value="mid">2+ years</option>
+              </select>
+            </div>
+            <div>
+              <label>Choose template</label>
+              <select id="templateSelect">
+                <option value="classic">Classic Student (single column)</option>
+                <option value="softSidebar">Soft Sidebar (2-column)</option>
+                <option value="balanced">Balanced Pro (2-column)</option>
+                <option value="modernLine">Modern Line (single column)</option>
+                <option value="photoSidebar">Photo Sidebar (with picture)</option>
+                <option value="compactAts">Compact ATS</option>
+                <option value="boldHeader">Bold Header</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- QUICK TEMPLATE BUTTONS -->
+          <div class="quick-wrap">
+            <div class="quick-label">Quick templates:</div>
+            <div class="quick-templates">
+              <button type="button" class="qbtn" data-template="classic">
+                Classic<br><span>Single column</span>
+              </button>
+              <button type="button" class="qbtn" data-template="softSidebar">
+                Soft Sidebar<br><span>Grey left panel</span>
+              </button>
+              <button type="button" class="qbtn" data-template="balanced">
+                Balanced Pro<br><span>2-column</span>
+              </button>
+              <button type="button" class="qbtn" data-template="modernLine">
+                Modern Line<br><span>Top accent</span>
+              </button>
+              <button type="button" class="qbtn" data-template="photoSidebar">
+                Photo Resume<br><span>With picture</span>
+              </button>
+              <button type="button" class="qbtn" data-template="compactAts">
+                Compact ATS<br><span>Dense single page</span>
+              </button>
+              <button type="button" class="qbtn" data-template="boldHeader">
+                Bold Header<br><span>Developer style</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="btn-row">
+            <button id="autoBuildBtn" class="btn btn-primary">Auto Build with AI</button>
+            <button id="demoBtn" class="btn btn-ghost" type="button">Demo data</button>
+            <button id="clearBtn" class="btn btn-ghost" type="button">Clear</button>
+            <button id="downloadBtn" class="btn btn-outline" type="button">Print / PDF</button>
+            <div id="atsLeft" class="ats-chip-left">ATS: 40%</div>
+          </div>
+
+          <hr style="margin:12px 0 8px; border:none; border-top:1px dashed #e5e7eb;">
+
+          <div style="font-size:12px; font-weight:600; color:#4b5563; margin-bottom:6px;">
+            Or edit fields manually (optional)
+          </div>
+
+          <label>Photo (optional)</label>
+          <input id="photoInput" type="file" accept="image/*">
+
+          <label>Name</label>
+          <input id="nameInput" placeholder="Your full name">
+
+          <label>Email</label>
+          <input id="emailInput" placeholder="you@example.com">
+
+          <label>Phone</label>
+          <input id="phoneInput" placeholder="+91-XXXXXXXXXX">
+
+          <label>Location</label>
+          <input id="locationInput" placeholder="Bengaluru, India">
+
+          <label>Headline</label>
+          <input id="headlineInput" placeholder="CS Student / Engineer">
+
+          <label>Summary / Objective</label>
+          <textarea id="summaryInput" placeholder="2-3 line professional summary"></textarea>
+
+          <label>Education</label>
+          <textarea id="educationInput" placeholder="Degree, College, CGPA, Year etc."></textarea>
+
+          <label>Internships / Experience</label>
+          <textarea id="experienceInput" placeholder="Internship / work experience with bullet points"></textarea>
+
+          <label>Projects (1–4 projects with bullets)</label>
+          <textarea id="projectsInput" placeholder="Project 1: ...&#10;• Bullet&#10;&#10;Project 2: ..."></textarea>
+
+          <label>Skills — Programming</label>
+          <input id="skillsProgInput" placeholder="Python, Java, C">
+
+          <label>Skills — Frontend</label>
+          <input id="skillsFrontInput" placeholder="HTML, CSS, React">
+
+          <label>Skills — Databases</label>
+          <input id="skillsDbInput" placeholder="MySQL, MongoDB">
+
+          <label>Skills — Other / Tools</label>
+          <input id="skillsOtherInput" placeholder="Git, Linux, Docker">
+
+          <label>Skills — Soft skills</label>
+          <input id="skillsSoftInput" placeholder="Communication, Teamwork">
+
+          <label>Languages known</label>
+          <input id="languagesInput" placeholder="English, Telugu, Kannada">
+
+          <label>Certifications</label>
+          <textarea id="certsInput" placeholder="One per line"></textarea>
+
+          <label>Interests / Hobbies</label>
+          <textarea id="interestsInput" placeholder="Cricket, hackathons, open source..."></textarea>
+        </div>
+
+        <!-- RIGHT PANEL -->
+        <div class="right">
+          <div id="resumePreview" class="resume"></div>
         </div>
       </div>
-
-      <div class="btn-row">
-        <button id="autoBuildBtn" class="btn btn-primary">Auto Build</button>
-        <button id="demoBtn" class="btn btn-ghost" type="button">Demo</button>
-        <button id="clearBtn" class="btn btn-ghost" type="button">Clear</button>
-        <button id="downloadBtn" class="btn btn-outline" type="button">Print / PDF</button>
-        <div id="atsLeft" class="ats-chip-left">ATS: 40%</div>
-      </div>
-
-      <hr style="margin:12px 0 8px; border:none; border-top:1px dashed #e5e7eb;">
-
-      <div style="font-size:12px; font-weight:600; color:#4b5563; margin-bottom:6px;">
-        Or edit fields manually (optional)
-      </div>
-
-      <label>Photo (optional)</label>
-      <input id="photoInput" type="file" accept="image/*">
-
-      <label>Name</label>
-      <input id="nameInput" placeholder="Your full name">
-
-      <label>Email</label>
-      <input id="emailInput" placeholder="you@example.com">
-
-      <label>Phone</label>
-      <input id="phoneInput" placeholder="+91-XXXXXXXXXX">
-
-      <label>Location</label>
-      <input id="locationInput" placeholder="Bengaluru, India">
-
-      <label>Headline</label>
-      <input id="headlineInput" placeholder="CS Student / Engineer">
-
-      <label>Summary / Objective</label>
-      <textarea id="summaryInput" placeholder="2-3 line professional summary"></textarea>
-
-      <label>Education</label>
-      <textarea id="educationInput" placeholder="Degree, College, CGPA, Year etc."></textarea>
-
-      <label>Internships / Experience</label>
-      <textarea id="experienceInput" placeholder="Internship / work experience with bullet points"></textarea>
-
-      <label>Projects (1–4 projects with bullets)</label>
-      <textarea id="projectsInput" placeholder="Project 1: ...&#10;• Bullet&#10;&#10;Project 2: ..."></textarea>
-
-      <label>Skills — Programming</label>
-      <input id="skillsProgInput" placeholder="Python, Java, C">
-
-      <label>Skills — Frontend</label>
-      <input id="skillsFrontInput" placeholder="HTML, CSS, React">
-
-      <label>Skills — Databases</label>
-      <input id="skillsDbInput" placeholder="MySQL, MongoDB">
-
-      <label>Skills — Other / Tools</label>
-      <input id="skillsOtherInput" placeholder="Git, Linux, Docker">
-
-      <label>Skills — Soft skills</label>
-      <input id="skillsSoftInput" placeholder="Communication, Teamwork">
-
-      <label>Languages known</label>
-      <input id="languagesInput" placeholder="English, Telugu, Kannada">
-
-      <label>Certifications</label>
-      <textarea id="certsInput" placeholder="One per line"></textarea>
-
-      <label>Interests / Hobbies</label>
-      <textarea id="interestsInput" placeholder="Cricket, hackathons, open source..."></textarea>
     </div>
 
-    <!-- RIGHT PANEL -->
-    <div class="right">
-      <div id="resumePreview" class="resume"></div>
-    </div>
+    <!-- FOOTER -->
+    <footer>
+      <div>
+        <a href="/">Home</a> ·
+        <a href="/about">About</a> ·
+        <a href="/privacy">Privacy</a> ·
+        <a href="/terms">Terms</a> ·
+        <a href="/contact">Contact</a>
+      </div>
+      <div style="margin-top:6px;">© 2025 FastResume • Built for students</div>
+    </footer>
   </div>
-
-  <!-- FOOTER (only for website, hidden in PDF) -->
-  <footer style="
-    max-width:1200px;
-    margin:16px auto 0 auto;
-    font-size:11px;
-    color:#6b7280;
-    text-align:center;
-  ">
-    © 2025 FastResume • Built by Students • Powered by AI
-  </footer>
 
   <script>
     /* ===== STATE & DOM ===== */
@@ -822,7 +982,7 @@
       balanced: tplBalanced,
       modernLine: tplModern,
       photoSidebar: tplPhoto,
-      compactAts: tplClassic,  // can customise later
+      compactAts: tplClassic,
       boldHeader: tplBold
     };
 
@@ -856,7 +1016,6 @@
       inputs.preview.innerHTML = tpl(data);
       inputs.ats.textContent = `ATS: ${atsScore()}%`;
 
-      // quick template highlight
       quickBtns.forEach(btn=>{
         btn.classList.toggle('qbtn-active', btn.dataset.template === state.template);
       });
@@ -980,18 +1139,18 @@
         alert('Auto-build failed: '+e.message);
       }finally{
         inputs.auto.disabled=false;
-        inputs.auto.textContent='Auto Build';
+        inputs.auto.textContent='Auto Build with AI';
       }
     });
 
     /* ===== DEMO / CLEAR / PRINT ===== */
     inputs.demo.addEventListener('click', () => {
       inputs.story.value =
-`I am a B.Tech CSE student at JSSSTU with CGPA 7.8.
-I know Python, Java, HTML, CSS, JavaScript, SQL and basics of machine learning.
-I built a bilingual voice chatbot using RAG with FAISS vector DB and a house construction management system website.
-I completed a web development internship and have NPTEL and Coursera certifications.
-I speak English, Telugu and Kannada and I am interested in web development and hackathons.`;
+`I am a B.Tech CSE student with good fundamentals in data structures, algorithms and web development.
+I know Python, Java, HTML, CSS, JavaScript and SQL.
+I have built a voice chatbot using RAG with FAISS on Groq and a construction management website as academic projects.
+I completed a web development internship and have NPTEL / Coursera certifications.
+I speak English and Telugu and I am interested in web development and hackathons.`;
       syncFromInputs();
     });
 
@@ -1024,7 +1183,6 @@ I speak English, Telugu and Kannada and I am interested in web development and h
           Object.assign(state,obj);
         }catch(e){}
       }
-      // push state -> inputs
       inputs.story.value = state.story || '';
       inputs.experience.value = state.experienceLevel || 'fresher';
       inputs.template.value = state.template || 'classic';
