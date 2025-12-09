@@ -2,227 +2,265 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Terms – FastResume</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Terms of use for FastResume, an AI-powered resume builder for students and freshers."
-  />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>Terms & Conditions – FastResume</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <style>
     :root{
-      --bg:#0f172a;
+      --bg:#020617;
       --card:#020617;
-      --accent:#2563eb;
       --border:#1f2937;
-      --muted:#9ca3af;
       --text:#e5e7eb;
+      --muted:#9ca3af;
+      --accent:#3b82f6;
     }
-    *{ box-sizing:border-box; }
-
+    *{box-sizing:border-box}
     body{
       margin:0;
-      min-height:100vh;
-      background:var(--bg);
-      font-family:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+      background:radial-gradient(80% 80% at 50% -10%, #111827 0%, #020617 60%);
       color:var(--text);
-      display:flex;
-      flex-direction:column;
     }
 
+    /* NAV */
     .nav{
-      max-width:960px;
+      max-width:1200px;
       margin:0 auto;
-      padding:18px 16px 0;
+      padding:18px 20px;
       display:flex;
       justify-content:space-between;
       align-items:center;
-      font-size:14px;
     }
-    .nav-title{
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
+    .logo{
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:.04em;
     }
     .nav a{
       color:var(--muted);
       text-decoration:none;
-      margin-left:16px;
-      font-size:13px;
+      margin-left:18px;
+      font-size:14px;
     }
-    .nav a:hover{
-      color:#e5e7eb;
-      text-decoration:underline;
-    }
+    .nav a:hover{color:white}
 
+    /* PAGE CARD */
     .wrap{
-      flex:1;
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;
-      padding:32px 16px 40px;
-    }
-
-    .card{
-      width:100%;
-      max-width:820px;
-      background:var(--card);
-      border-radius:16px;
+      max-width:900px;
+      margin:32px auto 80px;
+      padding:0 20px 40px;
+      background:rgba(15,23,42,0.9);
+      border-radius:18px;
       border:1px solid var(--border);
-      padding:24px 24px 28px;
-      box-shadow:0 18px 45px rgba(15,23,42,0.75);
     }
-
+    .header{
+      border-bottom:1px solid var(--border);
+      padding:22px 22px 16px;
+    }
     h1{
-      margin:0 0 8px;
-      font-size:22px;
-      font-weight:700;
+      margin:0 0 6px;
+      font-size:26px;
     }
     .subtitle{
-      font-size:13px;
+      margin:0;
       color:var(--muted);
-      margin-bottom:18px;
-    }
-
-    h2{
-      font-size:16px;
-      margin:20px 0 6px;
-    }
-
-    p{
       font-size:14px;
-      line-height:1.7;
-      margin:4px 0 10px;
     }
-
-    ul{
-      margin:4px 0 10px;
-      padding-left:20px;
-      font-size:14px;
-      line-height:1.6;
-    }
-
-    a{
-      color:#60a5fa;
-      text-decoration:none;
-    }
-    a:hover{
-      text-decoration:underline;
-    }
-
-    .small{
+    .pill{
+      display:inline-block;
+      margin-top:4px;
+      padding:5px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
       font-size:12px;
       color:var(--muted);
-      margin-top:16px;
+      background:#020617;
     }
 
-    .footer{
+    .content{
+      padding:18px 22px 24px;
+      font-size:14px;
+      line-height:1.7;
+      color:var(--text);
+    }
+    .content h2{
+      font-size:18px;
+      margin:20px 0 6px;
+    }
+    .content h3{
+      font-size:15px;
+      margin:14px 0 4px;
+    }
+    .content p{
+      margin:4px 0 10px;
+      color:var(--muted);
+    }
+    .content ul{
+      margin:4px 0 10px 20px;
+      padding:0;
+      color:var(--muted);
+    }
+
+    /* FOOTER */
+    footer{
+      border-top:1px solid var(--border);
+      padding:20px;
       text-align:center;
-      padding:10px 16px 18px;
-      font-size:11px;
+      font-size:13px;
       color:var(--muted);
     }
-    .footer a{
+    footer a{
       color:var(--muted);
-      margin:0 6px;
+      text-decoration:none;
+      margin:0 8px;
     }
-    .footer a:hover{
-      color:#e5e7eb;
+    footer a:hover{color:white}
+
+    @media(max-width:768px){
+      .wrap{
+        margin:20px auto 60px;
+        padding:0 10px 24px;
+      }
+      .header,.content{
+        padding-left:16px;
+        padding-right:16px;
+      }
+      h1{font-size:23px;}
     }
   </style>
 </head>
-
 <body>
-  <header class="nav">
-    <div class="nav-title">FastResume</div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/builder">Build Resume</a>
-      <a href="/about">About</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/contact">Contact</a>
-    </nav>
-  </header>
 
-  <main class="wrap">
-    <section class="card">
-      <h1>Terms of Use</h1>
-      <div class="subtitle">
-        Please read these simple terms before using FastResume. By using the website, you agree to these terms.
-      </div>
+  <!-- NAVBAR -->
+  <div class="nav">
+    <div class="logo">FastResume</div>
+    <div>
+      <a href="/">Home</a>
+      <a href="/builder">Builder</a>
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+    </div>
+  </div>
+
+  <!-- MAIN CARD -->
+  <div class="wrap">
+    <div class="header">
+      <h1>Terms &amp; Conditions</h1>
+      <p class="subtitle">
+        Please read these terms carefully before using FastResume.
+      </p>
+      <div class="pill">Last updated: December 2025</div>
+    </div>
+
+    <div class="content">
+      <p>
+        These Terms &amp; Conditions (<strong>“Terms”</strong>) govern your use of the
+        FastResume website and services (<strong>“Service”</strong>). By accessing or
+        using the Service, you agree to be bound by these Terms.
+      </p>
 
       <h2>1. About FastResume</h2>
       <p>
-        FastResume is a free AI-powered resume builder aimed at students, freshers and early-career job seekers.
-        The tool helps you generate resume content and a resume layout based on the details you provide.
+        FastResume is a simple AI-powered resume builder created mainly for
+        students and freshers. It helps you generate an ATS-friendly resume
+        based on the information you provide.
       </p>
 
-      <h2>2. No guarantees</h2>
-      <p>
-        FastResume does not guarantee that:
-      </p>
+      <h2>2. Use of the Service</h2>
       <ul>
-        <li>your resume will be selected by companies or recruiters, or</li>
-        <li>you will receive a job, interview, internship or any other opportunity.</li>
-      </ul>
-      <p>
-        You are responsible for reviewing and editing the generated resume before using it for applications.
-      </p>
-
-      <h2>3. Your responsibility</h2>
-      <p>When you use FastResume, you agree that you will:</p>
-      <ul>
-        <li>provide correct and honest information about your education, skills and experience;</li>
-        <li>not upload illegal, abusive or harmful content; and</li>
-        <li>use the site only for personal, non-commercial resume creation.</li>
+        <li>You may use the Service only for lawful purposes.</li>
+        <li>You are responsible for the accuracy of the information you enter.</li>
+        <li>You agree not to misuse the Service, attempt to break security, or overload our servers.</li>
       </ul>
 
-      <h2>4. Data & privacy</h2>
+      <h2>3. No guarantee of job placement</h2>
       <p>
-        FastResume processes the text you enter only to generate your resume. Resume content is not shared
-        publicly. Basic technical logs (such as IP address, browser type and timestamps) may be collected by
-        hosting and analytics providers to keep the service running and to understand usage.
-      </p>
-      <p>
-        For more details, please read our <a href="/privacy">Privacy Policy</a>.
+        FastResume only helps format and improve your resume content. We do
+        not guarantee any job offers, interview calls, or selection in campus
+        placements. Final results depend on many factors outside our control.
       </p>
 
-      <h2>5. Changes to the service</h2>
+      <h2>4. AI-generated content</h2>
       <p>
-        FastResume may change, pause or stop parts of the website at any time, for example for maintenance,
-        improvements or cost reasons. We may also update these terms occasionally. The latest version will
-        always be available on this page.
+        Resume text may be generated or rewritten using AI models (through the
+        Groq API with Llama&nbsp;3). You should always review and edit the
+        output before using it in real applications. You are responsible for
+        ensuring that your resume is truthful and accurate.
       </p>
 
-      <h2>6. Limitation of liability</h2>
+      <h2>5. Intellectual property</h2>
       <p>
-        As this is a free student project, FastResume is provided on an “as-is” basis. We are not liable for
-        any loss, damage or issues that arise from using the site, including lost opportunities or rejected
-        applications.
+        The FastResume website, design, and code are owned by the creator of
+        FastResume. You may not copy, resell, or publicly host a clone of the
+        Service without permission.
       </p>
-
-      <h2>7. Contact</h2>
       <p>
-        If you have questions about these terms, you can contact us at
-        <a href="mailto:pranaysaibly@gmail.com">pranaysaibly@gmail.com</a>.
+        The resume content that you type or approve remains yours. You are free
+        to download, print, and use your resume anywhere.
       </p>
 
-      <p class="small">
-        This page is a simple terms-of-use summary written in plain language and is not formal legal advice.
+      <h2>6. Third-party services</h2>
+      <p>
+        FastResume uses third-party services such as:
       </p>
-    </section>
-  </main>
+      <ul>
+        <li>Groq API – for AI text generation</li>
+        <li>Google Analytics – for usage statistics (if enabled)</li>
+        <li>Google AdSense – for displaying ads (if enabled)</li>
+      </ul>
+      <p>
+        Your use of these services through FastResume is also subject to their
+        own terms and privacy policies.
+      </p>
 
-  <footer class="footer">
-    © <span id="year"></span> FastResume
-    · <a href="/about">About</a>
-    · <a href="/privacy">Privacy</a>
-    · <a href="/terms">Terms</a>
-    · <a href="/contact">Contact</a>
+      <h2>7. Limitation of liability</h2>
+      <p>
+        The Service is provided on an <strong>“as is”</strong> and <strong>“as available”</strong> basis.
+        We do not make any promises about uninterrupted operation or
+        error-free output.
+      </p>
+      <p>
+        To the maximum extent allowed by law, FastResume and its creator are
+        not liable for any loss, damage, or consequences arising from your use
+        of the Service, including loss of opportunities or data.
+      </p>
+
+      <h2>8. Changes to the Service or Terms</h2>
+      <p>
+        FastResume may be updated or changed at any time, for example to add
+        features or fix issues. These Terms may also be updated occasionally.
+        When we make important changes, we will update the “Last updated” date
+        at the top of this page.
+      </p>
+
+      <h2>9. Termination</h2>
+      <p>
+        We may suspend or restrict access to the Service if we detect abuse,
+        misuse, or actions that might harm other users or the platform.
+      </p>
+
+      <h2>10. Contact</h2>
+      <p>
+        For any questions about these Terms, you can contact us at:
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <a href="mailto:pranaysaibly@gmail.com" style="color:#93c5fd;">
+          pranaysaibly@gmail.com
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="/">Home</a> |
+    <a href="/about">About</a> |
+    <a href="/privacy">Privacy</a> |
+    <a href="/terms">Terms</a> |
+    <a href="/contact">Contact</a>
+    <div style="margin-top:8px;">© 2025 FastResume</div>
   </footer>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
