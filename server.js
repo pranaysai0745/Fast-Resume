@@ -3,7 +3,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const path = require('path'); // ⬅️ for /builder route
+const path = require('path'); // ⬅️ for static HTML routes
 
 // If your Node version < 18, uncomment and install node-fetch
 // const fetch = require('node-fetch');
@@ -204,10 +204,32 @@ app.post('/api/build', async (req, res) => {
 });
 
 /**
- * GET /builder — serve the resume builder page
+ * Static page routes
  */
+
+// Home page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// Builder page
 app.get('/builder', (req, res) => {
   res.sendFile(path.join(__dirname, 'builder.html'));
+});
+
+// About page
+app.get('/about', (req, res) => {
+  res.sendFile(path.join(__dirname, 'about.html'));
+});
+
+// Privacy Policy page
+app.get('/privacy', (req, res) => {
+  res.sendFile(path.join(__dirname, 'privacy.html'));
+});
+
+// Contact page
+app.get('/contact', (req, res) => {
+  res.sendFile(path.join(__dirname, 'contact.html'));
 });
 
 /**
