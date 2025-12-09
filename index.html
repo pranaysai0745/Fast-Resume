@@ -2,223 +2,67 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FastResume — AI Resume Builder</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FastResume – AI Resume Builder for Students</title>
+  <meta name="description" content="FastResume is a free AI resume builder for students and freshers. Create ATS-friendly resumes in seconds.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFJ5MLRZPP"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-LFJ5MLRZPP');
-  </script>
-
-  <!-- Google AdSense -->
-  <script async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8109811196673278"
+  <!-- AdSense (already verified) -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8109811196673278"
     crossorigin="anonymous"></script>
 
-  <style>
-    :root{
-      --bg:#020617;
-      --card:#020617;
-      --card2:#0b1220;
-      --accent:#2563eb;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --border:#1f2937;
-    }
-
-    *{ box-sizing:border-box; }
-
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--text);
-      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    }
-
-    .page{
-      max-width:960px;
-      margin:0 auto;
-      padding:40px 16px 60px;
-    }
-
-    .hero{
-      display:flex;
-      justify-content:center;
-      margin-bottom:40px;
-    }
-
-    .hero-card{
-      background:var(--card);
-      border-radius:16px;
-      padding:40px 48px;
-      text-align:center;
-      border:1px solid var(--border);
-      box-shadow:0 22px 45px rgba(0,0,0,0.6);
-      max-width:420px;
-      width:100%;
-    }
-
-    .hero-title{
-      font-size:32px;
-      font-weight:800;
-      margin-bottom:8px;
-    }
-
-    .hero-sub{
-      font-size:14px;
-      color:var(--muted);
-      margin-bottom:28px;
-    }
-
-    .hero-btn{
-      display:inline-block;
-      padding:12px 28px;
-      border-radius:999px;
-      border:none;
-      background:var(--accent);
-      color:white;
-      font-size:15px;
-      font-weight:600;
-      cursor:pointer;
-      text-decoration:none;
-    }
-
-    .hero-btn:hover{
-      opacity:0.95;
-    }
-
-    .content-card{
-      background:var(--card2);
-      border-radius:14px;
-      border:1px solid var(--border);
-      padding:24px 24px 28px;
-      line-height:1.6;
-      font-size:14px;
-    }
-
-    .content-card h2{
-      margin-top:0;
-      margin-bottom:8px;
-      font-size:20px;
-    }
-
-    .content-card p{
-      margin:6px 0 10px;
-    }
-
-    .faq-block h3{
-      margin:18px 0 4px;
-      font-size:15px;
-    }
-
-    .faq-block p{
-      margin:0 0 4px;
-      color:var(--text);
-    }
-
-    hr{
-      border:none;
-      border-top:1px solid var(--border);
-      margin:24px 0 16px;
-    }
-
-    footer{
-      margin-top:28px;
-      text-align:center;
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    footer a{
-      color:var(--muted);
-      text-decoration:none;
-      margin:0 6px;
-    }
-
-    footer a:hover{
-      text-decoration:underline;
-    }
-
-    @media (max-width:600px){
-      .hero-card{
-        padding:28px 20px;
-      }
-      .hero-title{
-        font-size:26px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="page">
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-card">
-        <div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;">
-          AI Resume Builder
-        </div>
-        <h1 class="hero-title">FastResume</h1>
-        <p class="hero-sub">
-          Paste your details once and instantly get a clean, ATS-friendly resume
-          made for students and freshers.
-        </p>
-        <a class="hero-btn" href="/builder">Build Resume</a>
-      </div>
-    </section>
 
-    <!-- MAIN CONTENT -->
-    <section class="content-card">
-      <h2>How FastResume Works</h2>
-      <p>
-        FastResume is an AI-powered resume builder designed for students and freshers.
-        You paste your details, choose your experience level, and our system generates
-        a professional, ATS-friendly resume that you can download or print.
-      </p>
-      <p>
-        No signup is required. The tool is free to use and works directly in your browser.
-      </p>
+<header>
+  <h1>FastResume</h1>
+  <p>AI Resume Builder for Students & Freshers</p>
+  <a href="/builder" class="primary-btn">Build Resume</a>
+</header>
 
-      <hr>
+<section>
+  <h2>How FastResume Works</h2>
+  <p>
+    FastResume helps students create professional, ATS-friendly resumes in minutes.
+    Simply paste your details, choose your experience level, and let AI write a clean resume for you.
+  </p>
+  <p>No signup required. 100% free. Works directly in your browser.</p>
+</section>
 
-      <div class="faq-block">
-        <h2>Frequently Asked Questions</h2>
+<section>
+  <h2>Frequently Asked Questions</h2>
 
-        <h3>Is FastResume free?</h3>
-        <p>Yes. FastResume is completely free for students to generate resumes online.</p>
-
-        <h3>Do I need to create an account?</h3>
-        <p>No account or login is required. You can build your resume instantly.</p>
-
-        <h3>Is my data stored?</h3>
-        <p>
-          Resume data is processed temporarily only for generation and is not permanently saved
-          on the server.
-        </p>
-
-        <h3>Who can use FastResume?</h3>
-        <p>
-          Students, freshers, and early-career job seekers can use FastResume to create
-          professional resumes quickly.
-        </p>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <footer>
-      <span>© <span id="year"></span> FastResume.</span>
-      <a href="/about">About</a>|
-      <a href="/privacy">Privacy</a>|
-      <a href="/contact">Contact</a>
-    </footer>
+  <div class="faq-item">
+    <strong>Is FastResume free?</strong>
+    <p>Yes. FastResume is completely free for students and job seekers.</p>
   </div>
 
-  <script>
-    // small helper to always show current year
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <div class="faq-item">
+    <strong>Do I need to create an account?</strong>
+    <p>No account or login is required.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>Is my data saved?</strong>
+    <p>No. Your resume data is processed only for generation and not stored.</p>
+  </div>
+
+  <div class="faq-item">
+    <strong>Who should use FastResume?</strong>
+    <p>Students, freshers, and early-career professionals.</p>
+  </div>
+</section>
+
+<footer>
+  <a href="/about">About</a>
+  |
+  <a href="/privacy">Privacy Policy</a>
+  |
+  <a href="/terms">Terms</a>
+  |
+  <a href="/contact">Contact</a>
+  <p style="margin-top:12px;">© 2025 FastResume</p>
+</footer>
+
 </body>
 </html>
