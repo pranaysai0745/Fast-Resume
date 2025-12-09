@@ -2,134 +2,139 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>About FastResume – AI Resume Builder for Students</title>
+  <title>About FastResume — AI Resume Builder for Students</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="/style.css">
+  <meta name="description" content="Learn what FastResume is, who it is for, and why it was built specially for students and freshers." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
-<div class="page-wrap">
-  <main>
-    <!-- NAV (same as home) -->
-    <div class="nav">
-      <div>
-        <div class="nav-logo">FASTRESUME</div>
-        <div class="nav-tag">AI Resume Builder for Students</div>
-      </div>
-      <div class="nav-links">
-        <a href="/">Home</a>
-        <a href="/builder">Builder</a>
-        <a href="/contact">Contact</a>
-      </div>
+
+<header class="nav">
+  <div class="nav-wrap">
+    <div class="brand">
+      <span class="logo">FR</span>
+      <span class="brand-name">FastResume</span>
     </div>
-
-    <!-- ABOUT HERO -->
-    <section class="hero hero-small">
-      <div>
-        <h1 class="hero-title">
-          About <span class="hero-highlight">FastResume</span>
-        </h1>
-        <p class="hero-subtitle">
-          FastResume is an AI-powered resume builder created especially for students and freshers.
-          It helps you go from raw text to a clean, ATS-friendly resume in a few clicks.
-        </p>
-      </div>
-    </section>
-
-    <!-- WHO IS IT FOR -->
-    <section>
-      <h2>Who is FastResume for?</h2>
-      <p>
-        FastResume is designed especially for:
-      </p>
-      <div class="chip-row">
-        <span class="chip">B.Tech / B.E. CSE students</span>
-        <span class="chip">IT &amp; software freshers</span>
-        <span class="chip">Final-year project teams</span>
-        <span class="chip">Students applying for internships</span>
-        <span class="chip">Campus placement preparation</span>
-      </div>
-    </section>
-
-    <!-- SHORT EXPLANATION -->
-    <section>
-      <h2>Why FastResume?</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-title">Simple to use</div>
-          <p class="feature-desc">
-            Paste one paragraph about yourself and let the AI split it into sections like
-            summary, education, projects, and skills.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-title">Student-focused</div>
-          <p class="feature-desc">
-            The system is tuned for students and entry-level roles: more importance to
-            projects, internships and skills instead of long job history.
-          </p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-title">No signup required</div>
-          <p class="feature-desc">
-            You can directly open the builder, generate your resume and download it.
-            No login, no account, no password.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ MOVED HERE -->
-    <section>
-      <h2>Frequently Asked Questions</h2>
-
-      <div class="faq-item">
-        <strong>Is FastResume free?</strong>
-        <p>Yes, FastResume is completely free for students and freshers to use.</p>
-      </div>
-
-      <div class="faq-item">
-        <strong>Do I need to create an account?</strong>
-        <p>No login or signup is required. You can build a resume instantly.</p>
-      </div>
-
-      <div class="faq-item">
-        <strong>Is my data stored anywhere?</strong>
-        <p>
-          Resume data is processed only for generating the resume. It is not
-          permanently stored in a database.
-        </p>
-      </div>
-
-      <div class="faq-item">
-        <strong>Which AI model are you using?</strong>
-        <p>
-          FastResume uses the Groq API with Llama 3 to generate and clean resume
-          content, tuned specifically for fresher profiles.
-        </p>
-      </div>
-    </section>
-
-    <!-- CTA BACK TO BUILDER -->
-    <section>
-      <h2>Ready to try it?</h2>
-      <p>
-        Go to the builder, paste your details, and download a polished resume in a few minutes.
-      </p>
-      <p>
-        <a href="/builder" class="primary-btn">Open the builder</a>
-      </p>
-    </section>
-  </main>
-
-  <footer>
-    <div>
-      <a href="/">Home</a> |
-      <a href="/privacy">Privacy Policy</a> |
-      <a href="/terms">Terms</a> |
+    <nav class="nav-links">
+      <a href="/">Home</a>
+      <a href="/builder">Builder</a>
+      <a href="/about">About</a>
       <a href="/contact">Contact</a>
+      <a href="/builder" class="nav-btn">Start free</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-tag">About</div>
+  <h1 class="page-title">AI resume builder made for students.</h1>
+  <p class="page-sub">
+    FastResume is a tiny side-project built by a student, for students. It turns one
+    paragraph of your story into a clean, ATS-friendly resume you can send to
+    internships, campus placements and first-job openings.
+  </p>
+</section>
+
+<section class="about-grid">
+  <div class="about-left">
+    <h2 style="font-size:17px;margin-bottom:6px;">Who is FastResume for?</h2>
+    <p>
+      FastResume is tuned especially for:
+    </p>
+    <div class="badge-row">
+      <span class="badge">B.Tech / B.E. CSE & IT students</span>
+      <span class="badge">Software &amp; IT freshers</span>
+      <span class="badge">Final-year project teams</span>
+      <span class="badge">Students applying for internships</span>
+      <span class="badge">Campus placement preparation</span>
     </div>
-    <div style="margin-top:8px;">© 2025 FastResume</div>
-  </footer>
-</div>
+
+    <div class="stack">
+      <div class="stack-item">
+        <strong>Simple to use</strong>
+        Paste one paragraph about yourself, and let the AI split it into
+        sections like profile summary, education, projects, experience and skills.
+      </div>
+      <div class="stack-item">
+        <strong>Student-focused</strong>
+        The system gives more importance to projects, internships and skills
+        instead of long job history — perfect for students and first-job seekers.
+      </div>
+      <div class="stack-item">
+        <strong>No signup required</strong>
+        You can directly open the builder, generate your resume and download it.
+        No login, no password, no payment.
+      </div>
+    </div>
+
+    <div class="faq-block">
+      <h2 style="font-size:16px;margin:18px 0 8px;">How FastResume works</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">1. Paste your story once</div>
+        <div class="faq-a">
+          Write in your own words — CGPA, skills, projects, internships,
+          certifications, languages and interests.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">2. AI structures the resume</div>
+        <div class="faq-a">
+          FastResume uses the Groq API with Llama&nbsp;3 to organize the content,
+          improve wording slightly and keep it student-friendly.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">3. You tweak &amp; download</div>
+        <div class="faq-a">
+          Edit any field manually, choose a layout template, then export to
+          PDF using your browser’s print dialog.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside class="about-right-card">
+    <h3>Fast facts</h3>
+    <p style="margin:0;color:var(--muted);font-size:12px;">
+      • Built as a personal student project<br>
+      • Focused on Indian students &amp; freshers<br>
+      • Runs entirely in the browser + API
+    </p>
+
+    <div class="mini-grid">
+      <div class="mini-pill">Time to first draft &lt; 5 minutes</div>
+      <div class="mini-pill">Output: print-ready PDF</div>
+      <div class="mini-pill">No account • No payment</div>
+      <div class="mini-pill">Uses Groq + Llama&nbsp;3</div>
+    </div>
+
+    <div style="margin-top:14px;font-size:12px;color:var(--muted);">
+      <strong style="color:#e5e7eb;font-size:13px;">Built for peace of mind</strong><br>
+      Resume text is only used to generate your document and is not
+      permanently stored in a database. See the
+      <a href="/privacy">Privacy Policy</a> for more details.
+    </div>
+
+    <div style="margin-top:18px;">
+      <a href="/builder" class="btn-primary" style="font-size:13px;padding:10px 20px;">
+        Try the builder now
+      </a>
+    </div>
+  </aside>
+</section>
+
+<section class="cta">
+  <h2>Ready to draft your first resume in minutes?</h2>
+  <a href="/builder" class="btn-primary big">Open the resume builder</a>
+</section>
+
+<footer class="footer">
+  © 2025 FastResume · Built by a student · Powered by Groq (Llama&nbsp;3)
+</footer>
+
 </body>
 </html>
