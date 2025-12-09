@@ -2,265 +2,139 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Terms & Conditions – FastResume</title>
+  <title>About FastResume — AI Resume Builder for Students</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <style>
-    :root{
-      --bg:#020617;
-      --card:#020617;
-      --border:#1f2937;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --accent:#3b82f6;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
-      background:radial-gradient(80% 80% at 50% -10%, #111827 0%, #020617 60%);
-      color:var(--text);
-    }
-
-    /* NAV */
-    .nav{
-      max-width:1200px;
-      margin:0 auto;
-      padding:18px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .logo{
-      font-size:20px;
-      font-weight:800;
-      letter-spacing:.04em;
-    }
-    .nav a{
-      color:var(--muted);
-      text-decoration:none;
-      margin-left:18px;
-      font-size:14px;
-    }
-    .nav a:hover{color:white}
-
-    /* PAGE CARD */
-    .wrap{
-      max-width:900px;
-      margin:32px auto 80px;
-      padding:0 20px 40px;
-      background:rgba(15,23,42,0.9);
-      border-radius:18px;
-      border:1px solid var(--border);
-    }
-    .header{
-      border-bottom:1px solid var(--border);
-      padding:22px 22px 16px;
-    }
-    h1{
-      margin:0 0 6px;
-      font-size:26px;
-    }
-    .subtitle{
-      margin:0;
-      color:var(--muted);
-      font-size:14px;
-    }
-    .pill{
-      display:inline-block;
-      margin-top:4px;
-      padding:5px 10px;
-      border-radius:999px;
-      border:1px solid var(--border);
-      font-size:12px;
-      color:var(--muted);
-      background:#020617;
-    }
-
-    .content{
-      padding:18px 22px 24px;
-      font-size:14px;
-      line-height:1.7;
-      color:var(--text);
-    }
-    .content h2{
-      font-size:18px;
-      margin:20px 0 6px;
-    }
-    .content h3{
-      font-size:15px;
-      margin:14px 0 4px;
-    }
-    .content p{
-      margin:4px 0 10px;
-      color:var(--muted);
-    }
-    .content ul{
-      margin:4px 0 10px 20px;
-      padding:0;
-      color:var(--muted);
-    }
-
-    /* FOOTER */
-    footer{
-      border-top:1px solid var(--border);
-      padding:20px;
-      text-align:center;
-      font-size:13px;
-      color:var(--muted);
-    }
-    footer a{
-      color:var(--muted);
-      text-decoration:none;
-      margin:0 8px;
-    }
-    footer a:hover{color:white}
-
-    @media(max-width:768px){
-      .wrap{
-        margin:20px auto 60px;
-        padding:0 10px 24px;
-      }
-      .header,.content{
-        padding-left:16px;
-        padding-right:16px;
-      }
-      h1{font-size:23px;}
-    }
-  </style>
+  <meta name="description" content="Learn what FastResume is, who it is for, and why it was built specially for students and freshers." />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <div class="nav">
-    <div class="logo">FastResume</div>
-    <div>
+<header class="nav">
+  <div class="nav-wrap">
+    <div class="brand">
+      <span class="logo">FR</span>
+      <span class="brand-name">FastResume</span>
+    </div>
+    <nav class="nav-links">
       <a href="/">Home</a>
       <a href="/builder">Builder</a>
       <a href="/about">About</a>
       <a href="/contact">Contact</a>
+      <a href="/builder" class="nav-btn">Start free</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-tag">About</div>
+  <h1 class="page-title">AI resume builder made for students.</h1>
+  <p class="page-sub">
+    FastResume is a tiny side-project built by a student, for students. It turns one
+    paragraph of your story into a clean, ATS-friendly resume you can send to
+    internships, campus placements and first-job openings.
+  </p>
+</section>
+
+<section class="about-grid">
+  <div class="about-left">
+    <h2 style="font-size:17px;margin-bottom:6px;">Who is FastResume for?</h2>
+    <p>
+      FastResume is tuned especially for:
+    </p>
+    <div class="badge-row">
+      <span class="badge">B.Tech / B.E. CSE & IT students</span>
+      <span class="badge">Software &amp; IT freshers</span>
+      <span class="badge">Final-year project teams</span>
+      <span class="badge">Students applying for internships</span>
+      <span class="badge">Campus placement preparation</span>
+    </div>
+
+    <div class="stack">
+      <div class="stack-item">
+        <strong>Simple to use</strong>
+        Paste one paragraph about yourself, and let the AI split it into
+        sections like profile summary, education, projects, experience and skills.
+      </div>
+      <div class="stack-item">
+        <strong>Student-focused</strong>
+        The system gives more importance to projects, internships and skills
+        instead of long job history — perfect for students and first-job seekers.
+      </div>
+      <div class="stack-item">
+        <strong>No signup required</strong>
+        You can directly open the builder, generate your resume and download it.
+        No login, no password, no payment.
+      </div>
+    </div>
+
+    <div class="faq-block">
+      <h2 style="font-size:16px;margin:18px 0 8px;">How FastResume works</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">1. Paste your story once</div>
+        <div class="faq-a">
+          Write in your own words — CGPA, skills, projects, internships,
+          certifications, languages and interests.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">2. AI structures the resume</div>
+        <div class="faq-a">
+          FastResume uses the Groq API with Llama&nbsp;3 to organize the content,
+          improve wording slightly and keep it student-friendly.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">3. You tweak &amp; download</div>
+        <div class="faq-a">
+          Edit any field manually, choose a layout template, then export to
+          PDF using your browser’s print dialog.
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- MAIN CARD -->
-  <div class="wrap">
-    <div class="header">
-      <h1>Terms &amp; Conditions</h1>
-      <p class="subtitle">
-        Please read these terms carefully before using FastResume.
-      </p>
-      <div class="pill">Last updated: December 2025</div>
+  <aside class="about-right-card">
+    <h3>Fast facts</h3>
+    <p style="margin:0;color:var(--muted);font-size:12px;">
+      • Built as a personal student project<br>
+      • Focused on Indian students &amp; freshers<br>
+      • Runs entirely in the browser + API
+    </p>
+
+    <div class="mini-grid">
+      <div class="mini-pill">Time to first draft &lt; 5 minutes</div>
+      <div class="mini-pill">Output: print-ready PDF</div>
+      <div class="mini-pill">No account • No payment</div>
+      <div class="mini-pill">Uses Groq + Llama&nbsp;3</div>
     </div>
 
-    <div class="content">
-      <p>
-        These Terms &amp; Conditions (<strong>“Terms”</strong>) govern your use of the
-        FastResume website and services (<strong>“Service”</strong>). By accessing or
-        using the Service, you agree to be bound by these Terms.
-      </p>
-
-      <h2>1. About FastResume</h2>
-      <p>
-        FastResume is a simple AI-powered resume builder created mainly for
-        students and freshers. It helps you generate an ATS-friendly resume
-        based on the information you provide.
-      </p>
-
-      <h2>2. Use of the Service</h2>
-      <ul>
-        <li>You may use the Service only for lawful purposes.</li>
-        <li>You are responsible for the accuracy of the information you enter.</li>
-        <li>You agree not to misuse the Service, attempt to break security, or overload our servers.</li>
-      </ul>
-
-      <h2>3. No guarantee of job placement</h2>
-      <p>
-        FastResume only helps format and improve your resume content. We do
-        not guarantee any job offers, interview calls, or selection in campus
-        placements. Final results depend on many factors outside our control.
-      </p>
-
-      <h2>4. AI-generated content</h2>
-      <p>
-        Resume text may be generated or rewritten using AI models (through the
-        Groq API with Llama&nbsp;3). You should always review and edit the
-        output before using it in real applications. You are responsible for
-        ensuring that your resume is truthful and accurate.
-      </p>
-
-      <h2>5. Intellectual property</h2>
-      <p>
-        The FastResume website, design, and code are owned by the creator of
-        FastResume. You may not copy, resell, or publicly host a clone of the
-        Service without permission.
-      </p>
-      <p>
-        The resume content that you type or approve remains yours. You are free
-        to download, print, and use your resume anywhere.
-      </p>
-
-      <h2>6. Third-party services</h2>
-      <p>
-        FastResume uses third-party services such as:
-      </p>
-      <ul>
-        <li>Groq API – for AI text generation</li>
-        <li>Google Analytics – for usage statistics (if enabled)</li>
-        <li>Google AdSense – for displaying ads (if enabled)</li>
-      </ul>
-      <p>
-        Your use of these services through FastResume is also subject to their
-        own terms and privacy policies.
-      </p>
-
-      <h2>7. Limitation of liability</h2>
-      <p>
-        The Service is provided on an <strong>“as is”</strong> and <strong>“as available”</strong> basis.
-        We do not make any promises about uninterrupted operation or
-        error-free output.
-      </p>
-      <p>
-        To the maximum extent allowed by law, FastResume and its creator are
-        not liable for any loss, damage, or consequences arising from your use
-        of the Service, including loss of opportunities or data.
-      </p>
-
-      <h2>8. Changes to the Service or Terms</h2>
-      <p>
-        FastResume may be updated or changed at any time, for example to add
-        features or fix issues. These Terms may also be updated occasionally.
-        When we make important changes, we will update the “Last updated” date
-        at the top of this page.
-      </p>
-
-      <h2>9. Termination</h2>
-      <p>
-        We may suspend or restrict access to the Service if we detect abuse,
-        misuse, or actions that might harm other users or the platform.
-      </p>
-
-      <h2>10. Contact</h2>
-      <p>
-        For any questions about these Terms, you can contact us at:
-      </p>
-      <p>
-        <strong>Email:</strong>
-        <a href="mailto:pranaysaibly@gmail.com" style="color:#93c5fd;">
-          pranaysaibly@gmail.com
-        </a>
-      </p>
+    <div style="margin-top:14px;font-size:12px;color:var(--muted);">
+      <strong style="color:#e5e7eb;font-size:13px;">Built for peace of mind</strong><br>
+      Resume text is only used to generate your document and is not
+      permanently stored in a database. See the
+      <a href="/privacy">Privacy Policy</a> for more details.
     </div>
-  </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <a href="/">Home</a> |
-    <a href="/about">About</a> |
-    <a href="/privacy">Privacy</a> |
-    <a href="/terms">Terms</a> |
-    <a href="/contact">Contact</a>
-    <div style="margin-top:8px;">© 2025 FastResume</div>
-  </footer>
+    <div style="margin-top:18px;">
+      <a href="/builder" class="btn-primary" style="font-size:13px;padding:10px 20px;">
+        Try the builder now
+      </a>
+    </div>
+  </aside>
+</section>
+
+<section class="cta">
+  <h2>Ready to draft your first resume in minutes?</h2>
+  <a href="/builder" class="btn-primary big">Open the resume builder</a>
+</section>
+
+<footer class="footer">
+  © 2025 FastResume · Built by a student · Powered by Groq (Llama&nbsp;3)
+</footer>
 
 </body>
 </html>
