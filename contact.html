@@ -4,250 +4,135 @@
   <meta charset="UTF-8" />
   <title>Contact – FastResume</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <style>
-    :root{
-      --bg:#0b1020;
-      --card:#0f172a;
-      --border:#1f2933;
-      --text:#e5e7eb;
-      --muted:#9ca3af;
-      --accent:#3b82f6;
-    }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
-      background:radial-gradient(80% 80% at 50% -10%, #111827 0%, #020617 60%);
-      color:var(--text);
-    }
-
-    /* NAV */
-    .nav{
-      max-width:1200px;
-      margin:0 auto;
-      padding:18px 20px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-    }
-    .logo{
-      font-size:20px;
-      font-weight:800;
-      letter-spacing:.04em;
-    }
-    .nav a{
-      color:var(--muted);
-      text-decoration:none;
-      margin-left:18px;
-      font-size:14px;
-    }
-    .nav a:hover{color:white}
-
-    /* PAGE WRAP */
-    .wrap{
-      max-width:800px;
-      margin:40px auto 80px;
-      padding:0 20px;
-    }
-    h1{
-      font-size:30px;
-      margin-bottom:10px;
-    }
-    .sub{
-      color:var(--muted);
-      line-height:1.6;
-      max-width:640px;
-      margin-bottom:24px;
-    }
-
-    .cards{
-      display:grid;
-      grid-template-columns:1.4fr 1fr;
-      gap:20px;
-    }
-    .card{
-      background:rgba(15,23,42,.9);
-      border-radius:16px;
-      border:1px solid var(--border);
-      padding:22px 20px;
-    }
-    .card h2{
-      margin:0 0 10px;
-      font-size:18px;
-    }
-    .card p{
-      margin:0 0 14px;
-      color:var(--muted);
-      line-height:1.6;
-      font-size:14px;
-    }
-
-    .label{
-      font-size:13px;
-      text-transform:uppercase;
-      letter-spacing:.14em;
-      color:var(--muted);
-      margin-bottom:6px;
-    }
-
-    .pill{
-      display:inline-flex;
-      align-items:center;
-      padding:6px 10px;
-      border-radius:999px;
-      background:#020617;
-      border:1px solid var(--border);
-      font-size:12px;
-      color:var(--muted);
-      margin-top:4px;
-    }
-
-    .btn{
-      display:inline-block;
-      margin-top:6px;
-      padding:10px 16px;
-      border-radius:999px;
-      border:none;
-      background:var(--accent);
-      color:white;
-      font-size:14px;
-      font-weight:600;
-      text-decoration:none;
-      cursor:pointer;
-    }
-    .btn-secondary{
-      background:transparent;
-      border:1px solid var(--border);
-      color:var(--text);
-      margin-left:8px;
-    }
-    .btn:hover{
-      filter:brightness(1.05);
-    }
-
-    /* SIMPLE FORM (optional) */
-    form{
-      display:grid;
-      gap:10px;
-      margin-top:8px;
-    }
-    label{
-      font-size:13px;
-      color:var(--muted);
-    }
-    input,textarea{
-      width:100%;
-      padding:8px 10px;
-      border-radius:10px;
-      border:1px solid var(--border);
-      background:#020617;
-      color:var(--text);
-      font-family:inherit;
-      font-size:14px;
-    }
-    textarea{min-height:90px;resize:vertical;}
-
-    small{
-      font-size:12px;
-      color:var(--muted);
-    }
-
-    /* FOOTER */
-    footer{
-      border-top:1px solid var(--border);
-      padding:20px;
-      text-align:center;
-      font-size:13px;
-      color:var(--muted);
-    }
-    footer a{
-      color:var(--muted);
-      text-decoration:none;
-      margin:0 8px;
-    }
-    footer a:hover{color:white}
-
-    @media(max-width:800px){
-      .cards{
-        grid-template-columns:1fr;
-      }
-      h1{font-size:26px;}
-    }
-  </style>
+  <meta
+    name="description"
+    content="Contact FastResume – free AI resume builder for students and freshers."
+  />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
-  <!-- NAVBAR -->
-  <div class="nav">
-    <div class="logo">FastResume</div>
-    <div>
-      <a href="/">Home</a>
-      <a href="/builder">Builder</a>
-      <a href="/about">About</a>
-    </div>
-  </div>
-
-  <!-- MAIN CONTENT -->
-  <div class="wrap">
-    <h1>Contact FastResume</h1>
-    <p class="sub">
-      Have a question, found a bug, or want to suggest a feature?
-      You can reach the FastResume creator directly by email.
-    </p>
-
-    <div class="cards">
-      <!-- LEFT: EMAIL CONTACT -->
-      <div class="card">
-        <h2>Email support</h2>
-        <p>
-          For any issues with resume generation, ideas to improve the tool,
-          or general questions, please send an email.
-        </p>
-
-        <div class="label">Primary contact</div>
-        <div class="pill">pranaysaibly@gmail.com</div>
-
-        <a class="btn" href="mailto:pranaysaibly@gmail.com?subject=FastResume%20feedback">
-          Email FastResume
-        </a>
-        <p style="margin-top:14px;">
-          <small>
-            Please include details like your browser, what you were trying to do,
-            and any error messages. This helps fix problems faster.
-          </small>
-        </p>
+  <div class="page-wrap">
+    <!-- NAV -->
+    <header class="nav">
+      <div>
+        <div class="nav-logo">FastResume</div>
+        <div class="nav-tag">AI Resume Builder for Students</div>
       </div>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/builder">Builder</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+      </nav>
+    </header>
 
-      <!-- RIGHT: QUICK MESSAGE (front-end only) -->
-      <div class="card">
-        <h2>What can you ask?</h2>
-        <p>
-          You can contact for:
-        </p>
-        <ul style="margin:0 0 10px 18px; padding:0; color:var(--muted); line-height:1.7;">
-          <li>Bug reports or error screenshots</li>
-          <li>Suggestions for new features or templates</li>
-          <li>Questions about using the resume builder</li>
-          <li>Feedback from campus placement usage</li>
-        </ul>
-        <p style="margin-top:10px;">
-          <small>
-            Response time may vary, but most student queries are answered as soon as possible.
-          </small>
-        </p>
+    <main>
+      <!-- HERO / INTRO -->
+      <section class="hero">
+        <div>
+          <h1 class="hero-title">
+            Need help with <span class="hero-highlight">FastResume</span>?
+          </h1>
+          <p class="hero-subtitle">
+            If you face any issue with the resume builder or have suggestions to improve it,
+            you can contact the creator directly by email.
+          </p>
+
+          <div class="pill-row">
+            <span class="pill">Bug reports</span>
+            <span class="pill">Feature requests</span>
+            <span class="pill">Feedback from students</span>
+          </div>
+
+          <p style="margin-top:16px; font-size:14px; color:#4b5563;">
+            Please include details like your browser (Chrome, Edge, etc.), what you were trying
+            to do, and any error message you saw on the screen. This helps fix problems faster.
+          </p>
+        </div>
+
+        <!-- CONTACT CARD -->
+        <div class="hero-card">
+          <div class="hero-card-top">
+            <span class="hero-card-label">Contact details</span>
+            <span class="hero-card-chip">Student-built project</span>
+          </div>
+          <div class="hero-card-main">
+            <div style="margin-bottom:10px;">
+              <div style="font-size:13px; font-weight:600; color:#111827;">
+                Email
+              </div>
+              <div style="font-size:13px; color:#374151; margin-top:4px;">
+                <a href="mailto:pranaysaibly@gmail.com">pranaysaibly@gmail.com</a>
+              </div>
+            </div>
+
+            <div style="margin-bottom:10px;">
+              <div style="font-size:13px; font-weight:600; color:#111827;">
+                Response time
+              </div>
+              <div style="font-size:13px; color:#374151; margin-top:4px;">
+                This is a side project built by a student. Replies may take some time,
+                but genuine feedback is always appreciated.
+              </div>
+            </div>
+
+            <div>
+              <div style="font-size:13px; font-weight:600; color:#111827;">
+                What to include in your message
+              </div>
+              <ul style="font-size:13px; color:#374151; margin:6px 0 0; padding-left:18px;">
+                <li>Your name and college (optional)</li>
+                <li>What you were doing on FastResume</li>
+                <li>Screenshot or error message (if any)</li>
+                <li>Any feature ideas you want to see</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXTRA INFO -->
+      <section>
+        <h2>Common questions</h2>
+
+        <div class="faq-item">
+          <strong>Can you edit my resume personally?</strong>
+          <p>
+            FastResume is mainly a tool for you to generate your own resume. Personal
+            resume editing is not guaranteed, but your feedback helps improve the app.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <strong>I found a bug in the builder. What should I do?</strong>
+          <p>
+            Please send a short description plus a screenshot (if possible) to
+            <a href="mailto:pranaysaibly@gmail.com">pranaysaibly@gmail.com</a>.
+          </p>
+        </div>
+
+        <div class="faq-item">
+          <strong>Can I suggest new features?</strong>
+          <p>
+            Yes! You can suggest things like new templates, sections (like achievements),
+            better export options, etc. Good student-focused ideas are always welcome.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <div>
+        <a href="/">Home</a> |
+        <a href="/builder">Builder</a> |
+        <a href="/about">About</a> |
+        <a href="/privacy">Privacy Policy</a> |
+        <a href="/terms">Terms</a> |
+        <a href="/contact">Contact</a>
       </div>
-    </div>
+      <div style="margin-top:8px;">© 2025 FastResume</div>
+    </footer>
   </div>
-
-  <!-- FOOTER -->
-  <footer>
-    <a href="/about">About</a> |
-    <a href="/privacy">Privacy</a> |
-    <a href="/terms">Terms</a> |
-    <a href="/contact">Contact</a>
-    <div style="margin-top:8px;">© 2025 FastResume</div>
-  </footer>
-
 </body>
 </html>
