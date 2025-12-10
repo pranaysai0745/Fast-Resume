@@ -1028,39 +1028,6 @@
               </div>
               <span class="template-name">Classic Student</span>
               <span class="template-caption">Clean single column layout</span>
-              <!-- Elegant Purple -->
-<div class="template-card" data-template="elegantPurple">
-  <div class="template-preview" style="background:linear-gradient(135deg,#ede9fe,#f5d0fe)">
-    <div class="template-bar" style="background:#7c3aed"></div>
-    <div class="template-line long"></div>
-    <div class="template-line mid"></div>
-    <span class="template-chip">Premium</span>
-  </div>
-  <span class="template-name">Elegant Purple</span>
-  <span class="template-caption">Stylish & modern</span>
-</div>
-
-<!-- Minimal ATS -->
-<div class="template-card" data-template="minimalAts">
-  <div class="template-preview">
-    <div class="template-line long"></div>
-    <div class="template-line mid"></div>
-    <div class="template-line short"></div>
-    <span class="template-chip">ATS</span>
-  </div>
-  <span class="template-name">Minimal ATS</span>
-  <span class="template-caption">Recruiter friendly</span>
-</div>
-
-<!-- Developer Dark -->
-<div class="template-card" data-template="devDark">
-  <div class="template-preview" style="background:#020617">
-    <div class="template-line long" style="background:#e5e7eb"></div>
-    <div class="template-line mid" style="background:#e5e7eb"></div>
-    <span class="template-chip" style="color:#fff;border-color:#fff">Dev</span>
-  </div>
-  <span class="template-name">Developer Dark</span>
-  <span class="template-caption">Tech resume</span>
             </div>
 
             <div class="template-card" data-template="softSidebar">
@@ -1484,64 +1451,16 @@
         </div>
       </div>`;
     }
-    function tplElegantPurple(d){
-  return `
-  <div style="border-radius:14px;overflow:hidden">
-    <div style="background:linear-gradient(135deg,#7c3aed,#9333ea);color:white;padding:18px">
-      <div style="font-size:22px;font-weight:800">${esc(d.name)}</div>
-      <div style="font-size:12px;opacity:.9">${esc(d.headline)}</div>
-      <div style="font-size:11px;margin-top:4px">
-        ${esc([d.email,d.phone,d.location].filter(Boolean).join(" • "))}
-      </div>
-    </div>
-    <div style="padding:18px">
-      ${sec(d.summaryLabel,d.summary)}
-      ${sec("Education",d.education)}
-      ${sec(d.expLabel,d.experience)}
-      ${sec(d.projectsLabel,d.projects)}
-      ${sec("Skills",[d.skillsProgramming,d.skillsFrontend,d.skillsDatabase,d.skillsOther].filter(Boolean).join(", "))}
-    </div>
-  </div>`;
-}
 
-function tplMinimalAts(d){
-  return `
-  <div>
-    <h1>${esc(d.name)}</h1>
-    <div class="subtitle">${esc(d.headline)}</div>
-    ${sec(d.summaryLabel,d.summary)}
-    ${sec("Education",d.education)}
-    ${sec(d.expLabel,d.experience)}
-    ${sec(d.projectsLabel,d.projects)}
-    ${sec("Skills",[d.skillsProgramming,d.skillsFrontend,d.skillsDatabase].filter(Boolean).join(", "))}
-  </div>`;
-}
-
-function tplDevDark(d){
-  return `
-  <div style="background:#020617;color:#e5e7eb;padding:20px;border-radius:12px">
-    <h1 style="color:#f9fafb">${esc(d.name)}</h1>
-    <div style="opacity:.9">${esc(d.headline)}</div>
-    <hr style="border-color:#1e293b;margin:10px 0">
-    ${sec(d.summaryLabel,d.summary)}
-    ${sec("Projects",d.projects)}
-    ${sec("Skills",[d.skillsProgramming,d.skillsFrontend,d.skillsDatabase].filter(Boolean).join(", "))}
-    ${sec("Contact",[d.email,d.phone,d.location].filter(Boolean).join(" • "))}
-  </div>`;
-}
-
-      const tplMap = {
-  classic: tplClassic,
-  softSidebar: tplSoft,
-  balanced: tplBalanced,
-  modernLine: tplModern,
-  photoSidebar: tplPhoto,
-  compactAts: tplClassic,
-  boldHeader: tplBold,
-  elegantPurple: tplElegantPurple,
-  minimalAts: tplMinimalAts,
-  devDark: tplDevDark
-};
+    const tplMap = {
+      classic: tplClassic,
+      softSidebar: tplSoft,
+      balanced: tplBalanced,
+      modernLine: tplModern,
+      photoSidebar: tplPhoto,
+      compactAts: tplClassic,
+      boldHeader: tplBold
+    };
 
     function render(){
       const summaryLabel =
