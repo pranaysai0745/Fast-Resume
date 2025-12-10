@@ -517,58 +517,121 @@
       white-space:nowrap;
     }
 
-    /* quick templates */
-    .quick-wrap{
-      margin-top:8px;
-      margin-bottom:4px;
+    /* ===== IMAGE-STYLE TEMPLATE GRID ===== */
+    .template-section{
+      margin-top:16px;
     }
-    .quick-label{
+    .template-title{
+      font-size:13px;
+      font-weight:600;
+      color:#111827;
+      margin:0 0 2px;
+    }
+    .template-sub{
       font-size:11px;
       color:var(--muted);
-      margin-bottom:4px;
-      display:flex;
-      align-items:center;
-      gap:6px;
+      margin:0 0 8px;
     }
-    .quick-label::before{
-      content:"Templates";
-      font-weight:600;
-      font-size:11px;
-      color:#111827;
+    .template-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+      gap:12px;
     }
-    .quick-templates{
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-    }
-    .qbtn{
-      border-radius:999px;
-      border:1px solid #d1d5db;
-      background:#ffffff;
-      font-size:11px;
-      padding:4px 10px;
+    .template-card{
+      background:#f9fafb;
+      border-radius:16px;
+      padding:10px;
+      border:2px solid transparent;
       cursor:pointer;
-      white-space:nowrap;
-      box-shadow:0 6px 12px rgba(15,23,42,0.04);
-      transition:background .15s ease,border-color .15s ease,transform .14s ease,box-shadow .14s ease;
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      box-shadow:0 10px 20px rgba(15,23,42,0.05);
+      transition:transform .16s, box-shadow .16s, border-color .16s, background .16s;
     }
-    .qbtn span{
-      display:block;
-      font-size:10px;
+    .template-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 16px 32px rgba(15,23,42,0.12);
+    }
+    .template-card.active{
+      border-color:var(--accent);
+      background:#ffffff;
+      box-shadow:0 20px 40px rgba(37,99,235,0.25);
+    }
+    .template-preview{
+      border-radius:12px;
+      background:linear-gradient(135deg,#f9fafb,#e5e7eb);
+      padding:8px;
+      min-height:90px;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+      overflow:hidden;
+    }
+    .template-preview-row{
+      display:flex;
+      gap:4px;
+      margin-top:3px;
+    }
+    .template-bar{
+      height:10px;
+      border-radius:999px;
+      margin-bottom:4px;
+      opacity:.95;
+    }
+    .template-line{
+      height:4px;
+      border-radius:999px;
+      background:rgba(148,163,184,.9);
+      margin-bottom:3px;
+    }
+    .template-line.long{ width:90%; }
+    .template-line.mid{ width:70%; }
+    .template-line.short{ width:45%; }
+    .template-chip{
+      font-size:9px;
+      padding:2px 6px;
+      border-radius:999px;
+      border:1px solid rgba(148,163,184,.7);
+      color:#4b5563;
+      align-self:flex-start;
+      background:rgba(255,255,255,.9);
+      margin-top:2px;
+    }
+    .template-col{
+      flex:1;
+    }
+
+    .template-name{
+      font-size:12px;
+      font-weight:600;
+    }
+    .template-caption{
+      font-size:11px;
+      color:var(--muted);
+    }
+
+    /* different accent colours per template */
+    .tp-classic .template-bar{ background:#111827; }
+    .tp-soft .template-bar{ background:#4b5563; }
+    .tp-balanced .template-bar{ background:#0369a1; }
+    .tp-modern .template-bar{ background:#2563eb; }
+    .tp-photo .template-bar{ background:#f97316; }
+    .tp-bold .template-bar{ background:#111827; }
+
+    .tp-soft{ background:linear-gradient(135deg,#f9fafb,#e5e7eb); }
+    .tp-modern{ background:linear-gradient(135deg,#eff6ff,#e0f2fe); }
+    .tp-photo{ background:linear-gradient(135deg,#fef3c7,#fee2e2); }
+    .tp-bold{ background:linear-gradient(135deg,#111827,#1f2937); }
+    .tp-bold .template-line{ background:rgba(229,231,235,.9); }
+
+    footer.builder-footer{
+      max-width:1200px;
+      margin:10px auto 26px;
+      font-size:11px;
       color:#6b7280;
-      font-weight:500;
+      text-align:center;
     }
-    .qbtn:hover{
-      transform:translateY(-1px);
-      box-shadow:0 12px 20px rgba(15,23,42,0.10);
-    }
-    .qbtn-active{
-      background:linear-gradient(135deg,var(--accent),var(--accent-2));
-      border-color:transparent;
-      color:white;
-      box-shadow:0 14px 30px rgba(79,70,229,0.4);
-    }
-    .qbtn-active span{ color:#e5e7eb; }
 
     /* resume sections */
     .resume-header-name{
@@ -721,14 +784,6 @@
       display:grid;
       grid-template-columns:1.3fr 1fr;
       gap:14px;
-    }
-
-    footer.builder-footer{
-      max-width:1200px;
-      margin:10px auto 26px;
-      font-size:11px;
-      color:#6b7280;
-      text-align:center;
     }
 
     /* responsive */
@@ -946,44 +1001,124 @@
               <option value="mid">2+ years</option>
             </select>
           </div>
-          <div>
-            <label>Choose template</label>
-            <select id="templateSelect">
-              <option value="classic">Classic Student (single column)</option>
-              <option value="softSidebar">Soft Sidebar (2-column)</option>
-              <option value="balanced">Balanced Pro (2-column)</option>
-              <option value="modernLine">Modern Line (single column)</option>
-              <option value="photoSidebar">Photo Sidebar (with picture)</option>
-              <option value="compactAts">Compact ATS</option>
-              <option value="boldHeader">Bold Header</option>
-            </select>
-          </div>
         </div>
 
-        <div class="quick-wrap">
-          <div class="quick-label">Quick templates</div>
-          <div class="quick-templates">
-            <button type="button" class="qbtn" data-template="classic">
-              Classic<br><span>Single column</span>
-            </button>
-            <button type="button" class="qbtn" data-template="softSidebar">
-              Soft Sidebar<br><span>Grey left panel</span>
-            </button>
-            <button type="button" class="qbtn" data-template="balanced">
-              Balanced Pro<br><span>2-column</span>
-            </button>
-            <button type="button" class="qbtn" data-template="modernLine">
-              Modern Line<br><span>Top accent</span>
-            </button>
-            <button type="button" class="qbtn" data-template="photoSidebar">
-              Photo Resume<br><span>With picture</span>
-            </button>
-            <button type="button" class="qbtn" data-template="compactAts">
-              Compact ATS<br><span>Dense single page</span>
-            </button>
-            <button type="button" class="qbtn" data-template="boldHeader">
-              Bold Header<br><span>Developer style</span>
-            </button>
+        <!-- Hidden native select, still used by JS/state -->
+        <select id="templateSelect" style="display:none;">
+          <option value="classic">Classic Student (single column)</option>
+          <option value="softSidebar">Soft Sidebar (2-column)</option>
+          <option value="balanced">Balanced Pro (2-column)</option>
+          <option value="modernLine">Modern Line (single column)</option>
+          <option value="photoSidebar">Photo Sidebar (with picture)</option>
+          <option value="compactAts">Compact ATS</option>
+          <option value="boldHeader">Bold Header</option>
+        </select>
+
+        <!-- Image-style template chooser -->
+        <div class="template-section">
+          <h3 class="template-title">Choose your resume template</h3>
+          <p class="template-sub">Click any card to apply a template. You can switch anytime.</p>
+
+          <div class="template-grid">
+            <div class="template-card" data-template="classic">
+              <div class="template-preview tp-classic">
+                <div class="template-bar"></div>
+                <div class="template-line long"></div>
+                <div class="template-line mid"></div>
+                <div class="template-line short"></div>
+              </div>
+              <span class="template-name">Classic Student</span>
+              <span class="template-caption">Clean single column layout</span>
+            </div>
+
+            <div class="template-card" data-template="softSidebar">
+              <div class="template-preview tp-soft">
+                <div class="template-bar"></div>
+                <div class="template-preview-row">
+                  <div class="template-col">
+                    <div class="template-line long"></div>
+                    <div class="template-line mid"></div>
+                    <div class="template-line short"></div>
+                  </div>
+                  <div class="template-col">
+                    <div class="template-line mid"></div>
+                    <div class="template-line short"></div>
+                    <div class="template-line short"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="template-name">Soft Sidebar</span>
+              <span class="template-caption">Grey left panel style</span>
+            </div>
+
+            <div class="template-card" data-template="balanced">
+              <div class="template-preview tp-balanced">
+                <div class="template-bar"></div>
+                <div class="template-preview-row">
+                  <div class="template-col">
+                    <div class="template-line long"></div>
+                    <div class="template-line mid"></div>
+                    <div class="template-line mid"></div>
+                  </div>
+                  <div class="template-col">
+                    <div class="template-line long"></div>
+                    <div class="template-line short"></div>
+                    <div class="template-line short"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="template-name">Balanced Pro</span>
+              <span class="template-caption">2-column professional</span>
+            </div>
+
+            <div class="template-card" data-template="modernLine">
+              <div class="template-preview tp-modern">
+                <div class="template-chip">Top accent</div>
+                <div class="template-line long"></div>
+                <div class="template-line mid"></div>
+                <div class="template-line short"></div>
+              </div>
+              <span class="template-name">Modern Line</span>
+              <span class="template-caption">Minimal with accent bar</span>
+            </div>
+
+            <div class="template-card" data-template="photoSidebar">
+              <div class="template-preview tp-photo">
+                <div class="template-preview-row">
+                  <div class="template-col">
+                    <div class="template-line long"></div>
+                    <div class="template-line mid"></div>
+                    <div class="template-line short"></div>
+                  </div>
+                  <div class="template-col">
+                    <div class="template-chip">Photo</div>
+                    <div class="template-line mid"></div>
+                    <div class="template-line short"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="template-name">Photo Resume</span>
+              <span class="template-caption">Space for a picture</span>
+            </div>
+
+            <div class="template-card" data-template="boldHeader">
+              <div class="template-preview tp-bold">
+                <div class="template-bar"></div>
+                <div class="template-line long"></div>
+                <div class="template-preview-row">
+                  <div class="template-col">
+                    <div class="template-line mid"></div>
+                    <div class="template-line mid"></div>
+                  </div>
+                  <div class="template-col">
+                    <div class="template-line short"></div>
+                    <div class="template-line short"></div>
+                  </div>
+                </div>
+              </div>
+              <span class="template-name">Bold Header</span>
+              <span class="template-caption">Developer-style header</span>
+            </div>
           </div>
         </div>
 
@@ -1110,7 +1245,7 @@
       auto:$('autoBuildBtn'), demo:$('demoBtn'),
       clear:$('clearBtn'), print:$('downloadBtn')
     };
-    const quickBtns = Array.from(document.querySelectorAll('.qbtn'));
+    const quickBtns = Array.from(document.querySelectorAll('.template-card'));
 
     const esc = s => String(s||'').replace(/[&<>]/g,c=>({ '&':'&amp;','<':'&lt;','>':'&gt;' }[c]));
     const clean = s => {
@@ -1358,7 +1493,7 @@
       inputs.ats.textContent = `ATS: ${atsScore()}%`;
 
       quickBtns.forEach(btn=>{
-        btn.classList.toggle('qbtn-active', btn.dataset.template === state.template);
+        btn.classList.toggle('active', btn.dataset.template === state.template);
       });
 
       saveState();
@@ -1403,9 +1538,10 @@
       render();
     });
 
-    quickBtns.forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        const t = btn.dataset.template;
+    /* click on image cards to change template */
+    quickBtns.forEach(card=>{
+      card.addEventListener('click',()=>{
+        const t = card.dataset.template;
         state.template = t;
         inputs.template.value = t;
         render();
